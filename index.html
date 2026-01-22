@@ -22,49 +22,66 @@
 }
 
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Roboto', sans-serif;background:url('images/fundo-site.jpg') no-repeat center/cover; background-size:cover; color:#0f172a;}
+body{font-family:'Roboto', sans-serif;background:url('images/fundo-site.jpg') no-repeat center/cover;background-size:cover;color:#0f172a;}
 
-/* Menu topo transparente */
-nav{
+/* Menu botão */
+.menu-btn{
+  position:fixed;
+  top:15px;
+  right:15px;
+  z-index:999;
+  width:45px;
+  height:45px;
+  background:var(--azul);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  color:#fff;
+  font-size:1.5rem;
+  box-shadow:0 5px 20px rgba(0,0,0,.3);
+  transition:.3s;
+}
+.menu-btn:hover{background:var(--btn-hover);}
+
+/* Menu expandido */
+.menu-expand{
   position:fixed;
   top:0;
-  left:0;
-  width:100%;
+  right:0;
+  width:200px;
+  height:100%;
+  background:var(--azul);
+  transform:translateX(100%);
+  transition:transform .3s;
   display:flex;
-  justify-content:center;
+  flex-direction:column;
+  padding-top:80px;
   gap:20px;
-  padding:15px 0;
-  z-index:999;
-  transition:.3s;
-  font-family:'Montserrat', sans-serif;
+  z-index:998;
 }
-nav a{
+.menu-expand a{
   color:#fff;
   text-decoration:none;
   font-weight:600;
-  transition:.3s;
+  text-align:center;
+  font-family:'Montserrat', sans-serif;
 }
-nav a:hover{opacity:.8;}
-nav.scrolled{
-  background:var(--azul);
-  border-bottom:2px solid #3376e6;
-}
+.menu-expand.show{transform:translateX(0);}
 
-/* Banner com Parallax */
-header{
-  margin-top:60px; /* espaço para menu fixo */
-}
+/* Banner */
 .banner-container{
   position:relative;
-  height:500px;
+  width:100%;
+  max-height:500px;
   overflow:hidden;
 }
 .banner-container .banner-img{
   width:100%;
-  height:100%;
+  height:auto;
   object-fit:contain;
-  transform: translateY(0px);
-  transition: transform 0.2s ease-out;
+  display:block;
 }
 .client-bar-banner{
   position:absolute;
@@ -113,14 +130,13 @@ header{
 .slides img{
   width:100%;
   height:auto;
-  object-fit:contain; /* imagem inteira sem cortar */
+  object-fit:contain;
   display:block;
   position:absolute;
   top:0;
   left:0;
   opacity:0;
   transition:opacity 1s ease-in-out;
-  border-radius:12px;
 }
 .slides img.active{
   opacity:1;
@@ -202,10 +218,10 @@ footer{background:var(--escuro);color:#cbd5f5;padding:30px 20px;text-align:cente
 /* Mobile Responsivo */
 @media(max-width:768px){
   body{background-size:cover;background-position:center;}
-  .banner-container{height:320px;}
-  .banner-container .banner-img{height:100%;object-fit:contain;}
+  .banner-container{max-height:320px;}
+  .banner-container .banner-img{max-height:320px;}
   .client-bar-banner{
-    position:relative; /* muda para não sobrepor o banner */
+    position:relative; 
     bottom:auto;
     left:auto;
     transform:none;
@@ -226,12 +242,15 @@ footer{background:var(--escuro);color:#cbd5f5;padding:30px 20px;text-align:cente
 </head>
 <body>
 
-<!-- Menu topo -->
-<nav id="topo-menu">
+<!-- Botão Menu -->
+<div class="menu-btn" id="menu-btn">&#9776;</div>
+
+<!-- Menu Expandido -->
+<div class="menu-expand" id="menu-expand">
   <a href="#vantagens">Vantagens</a>
   <a href="#planos">Planos</a>
   <a href="#cliente">Área do Cliente</a>
-</nav>
+</div>
 
 <!-- Botões fixos -->
 <a class="btn-cliente-fixo" href="#cliente">Área do Cliente</a>
@@ -280,16 +299,13 @@ indicators.forEach((ind,i)=>{
 });
 setInterval(()=>{current=(current+1)%slides.length;showSlide(current);},3000);
 
-// Menu muda cor ao rolar
-window.addEventListener('scroll',()=>{
-  const nav=document.getElementById('topo-menu');
-  if(window.scrollY>50){
-    nav.classList.add('scrolled');
-  } else{
-    nav.classList.remove('scrolled');
-  }
+// Menu botão
+const menuBtn=document.getElementById('menu-btn');
+const menuExpand=document.getElementById('menu-expand');
+menuBtn.addEventListener('click',()=>menuExpand.classList.toggle('show'));
 
-  // Parallax Banner
+// Parallax Banner
+window.addEventListener('scroll',()=>{
   const parallax = document.querySelector('.parallax .banner-img');
   if(parallax){
     parallax.style.transform = 'translateY(' + (window.scrollY*0.3) + 'px)';
