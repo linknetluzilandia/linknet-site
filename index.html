@@ -388,7 +388,7 @@ footer{background:var(--escuro);color:#cbd5f5;padding:30px 20px;text-align:cente
 
 <!-- Menu Expandido -->
 <div class="menu-expand" id="menu-expand">
-  <a href="#vantagens">Vantagens</a>
+  <a href="#vantagens" onclick="document.getElementById('menu-expand').classList.remove('show')">Vantagens</a>
   <a href="#planos">Planos</a>
   <a href="#cliente">Área do Cliente</a>
 </div>
@@ -503,6 +503,28 @@ document.addEventListener("DOMContentLoaded", function () {
 <footer>
 <p>© 2026 Linknet Luzilândia</p>
 </footer>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  /* ===== MENU HAMBÚRGUER ===== */
+  const menuBtn = document.getElementById("menu-btn");
+  const menu = document.getElementById("menu-expand");
+
+  menuBtn.addEventListener("click", function (e) {
+    e.stopPropagation();
+    menu.classList.toggle("show");
+  });
+
+  document.addEventListener("click", function () {
+    menu.classList.remove("show");
+  });
+
+  menu.addEventListener("click", function (e) {
+    e.stopPropagation();
+  });
+
+});
+</script>
 
 </body>
 </html>
