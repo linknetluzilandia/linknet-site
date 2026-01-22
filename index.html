@@ -71,16 +71,6 @@
   color:#fff;
 }
 
-
-.menu-contratar{
-  display:none;
-  position:absolute;
-  background:#ffffff;
-  border-radius:12px;
-  box-shadow:0 10px 30px rgba(0,0,0,.2);
-  padding:10px;
-  margin-top:10px;
-  z-index:9999;
 }
 
 .menu-contratar a{
@@ -183,13 +173,6 @@ body{font-family:'Roboto', sans-serif;background:url('images/fundo-site.jpg') no
   z-index:2;
   box-shadow:0 5px 15px rgba(0,0,0,0.3);
 }
-<button id="btn-contratar" class="btn">Contratar Agora</button>
-
-<div id="menu-contratar" class="menu-contratar">
-  <a href="https://wa.me/5586999146612" target="_blank">📍 Piauí</a>
-  <a href="https://wa.me/559899685797" target="_blank">📍 Maranhão</a>
-</div>
-
 
 /* Dropdown Contratar Agora */
 .dropdown{
@@ -351,16 +334,25 @@ footer{background:var(--escuro);color:#cbd5f5;padding:30px 20px;text-align:cente
   #planos .plano{padding:20px;}
   #cliente .card{padding:15px;}
 }
-/* ===== MENU CONTRATAR AGORA ===== */
+/* ===== CONTRATAR AGORA ===== */
+.contratar-wrapper{
+  position:relative;
+  display:inline-block;
+}
+
 .menu-contratar{
   display:none;
   position:absolute;
+  top:100%;
+  left:50%;
+  transform:translateX(-50%);
+  margin-top:10px;
   background:#ffffff;
   border-radius:12px;
   box-shadow:0 10px 30px rgba(0,0,0,.2);
   padding:10px;
-  margin-top:10px;
   z-index:9999;
+  min-width:180px;
 }
 
 .menu-contratar a{
@@ -374,6 +366,11 @@ footer{background:var(--escuro);color:#cbd5f5;padding:30px 20px;text-align:cente
 
 .menu-contratar a:hover{
   background:#e6f0ff;
+}
+.hero-botoes{
+  display:flex;
+  justify-content:center;
+  margin:30px 0;
 }
 
 </style>
@@ -404,14 +401,18 @@ footer{background:var(--escuro);color:#cbd5f5;padding:30px 20px;text-align:cente
 
 <!-- Botão Contratar Agora com Dropdown -->
 <div class="hero-botoes">
-  <div class="dropdown">
-    <button class="dropdown-btn">Contratar Agora ▼</button>
-    <div class="dropdown-content">
-      <a href="https://wa.me/5586999146612" target="_blank">Piauí</a>
-      <a href="https://wa.me/559899685797" target="_blank">Maranhão</a>
+  <div class="contratar-wrapper">
+    <button id="btn-contratar" class="dropdown-btn">
+      Contratar Agora ▼
+    </button>
+
+    <div id="menu-contratar" class="menu-contratar">
+      <a href="https://wa.me/5586999146612" target="_blank">📍 Piauí</a>
+      <a href="https://wa.me/559899685797" target="_blank">📍 Maranhão</a>
     </div>
   </div>
 </div>
+
 
 <!-- Slider -->
 <div class="slider">
@@ -428,39 +429,18 @@ footer{background:var(--escuro);color:#cbd5f5;padding:30px 20px;text-align:cente
 </div>
 
 <script>
+document.addEventListener("DOMContentLoaded", function () {
+  const btn = document.getElementById("btn-contratar");
+  const menu = document.getElementById("menu-contratar");
 
-// Slider
-const slides=document.querySelectorAll('.slides img');
-const indicators=document.querySelectorAll('.slider-indicators span');
-let current=0;
-function showSlide(index){
-  slides.forEach((slide,i)=>slide.classList.toggle('active', i===index));
-  indicators.forEach((ind,i)=>ind.classList.toggle('active', i===index));
-}
-indicators.forEach((ind,i)=>{
-  ind.addEventListener('click',()=>{current=i;showSlide(current);});
-});
-setInterval(()=>{current=(current+1)%slides.length;showSlide(current);},3000);
+  btn.addEventListener("click", function (e) {
+    e.stopPropagation();
+    menu.style.display = menu.style.display === "block" ? "none" : "block";
+  });
 
-// Menu botão
-const menuBtn=document.getElementById('menu-btn');
-const menuExpand=document.getElementById('menu-expand');
-menuBtn.addEventListener('click',()=>menuExpand.classList.toggle('show'));
-
-// Dropdown Contratar Agora
-const dropdownBtn=document.querySelector('.dropdown-btn');
-const dropdown=document.querySelector('.dropdown');
-dropdownBtn.addEventListener('click',()=>{dropdown.classList.toggle('show');});
-window.addEventListener('click', e=>{
-  if(!dropdown.contains(e.target)){dropdown.classList.remove('show');}
-});
-
-// Parallax Banner
-window.addEventListener('scroll',()=>{
-  const parallax = document.querySelector('.parallax .banner-img');
-  if(parallax){
-    parallax.style.transform = 'translateY(' + (window.scrollY*0.3) + 'px)';
-  }
+  document.addEventListener("click", function () {
+    menu.style.display = "none";
+  });
 });
 </script>
 
