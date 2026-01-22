@@ -22,30 +22,34 @@
 }
 
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:'Roboto', sans-serif;background:url('images/fundo-site.jpg') no-repeat center/cover; color:#0f172a;}
+body{font-family:'Roboto', sans-serif;background:url('images/fundo-site.jpg') no-repeat center/cover; background-size:cover; color:#0f172a;}
 
-/* Menu topo */
+/* Menu topo transparente */
 nav{
   position:fixed;
   top:0;
   left:0;
   width:100%;
-  background:rgba(0,74,178,0.9);
   display:flex;
   justify-content:center;
   gap:20px;
   padding:15px 0;
   z-index:999;
-  border-bottom:2px solid #3376e6;
+  transition:.3s;
+  font-family:'Montserrat', sans-serif;
+  border-bottom:2px solid transparent;
 }
 nav a{
   color:#fff;
   text-decoration:none;
   font-weight:600;
-  font-family:'Montserrat', sans-serif;
   transition:.3s;
 }
 nav a:hover{opacity:.8;}
+nav.scrolled{
+  background:var(--azul);
+  border-bottom:2px solid #3376e6;
+}
 
 /* Banner */
 header{
@@ -56,14 +60,17 @@ header{
 .banner-container{
   position:relative;
   width:100%;
+  max-height:500px; /* altura máxima no PC */
   overflow:hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 .banner-img{
   width:100%;
   height:auto;
   object-fit:contain;
   display:block;
-  box-shadow:0 15px 40px rgba(0,0,0,0.2);
   border-radius:12px;
 }
 .client-bar-banner{
@@ -75,7 +82,6 @@ header{
   padding:10px 25px;
   border-radius:25px;
   font-weight:600;
-  font-family:'Montserrat', sans-serif;
   text-align:center;
   color:#fff;
   z-index:2;
@@ -93,7 +99,6 @@ header{
   padding:15px 35px;
   border-radius:40px;
   font-weight:600;
-  font-family:'Montserrat', sans-serif;
   margin:10px auto;
   display:inline-block;
   transition:.3s;
@@ -115,7 +120,7 @@ header{
 .slides img{
   width:100%;
   height:auto;
-  object-fit:contain;
+  object-fit:contain; /* imagem inteira sem cortar */
   display:block;
   position:absolute;
   top:0;
@@ -172,7 +177,6 @@ section h2{
   padding:25px;
   text-align:center;
   box-shadow:0 8px 25px rgba(0,74,178,.15);
-  font-family:'Roboto', sans-serif;
   transition:transform .3s, box-shadow .3s;
 }
 .card:hover{
@@ -214,14 +218,14 @@ footer{background:var(--escuro);color:#cbd5f5;padding:30px 20px;text-align:cente
   .cards{grid-template-columns:1fr;gap:15px;}
   #planos .plano{padding:20px;}
   #cliente .card{padding:15px;}
-  .btn-contratar-mobile{display:block;} /* botão flutuante no mobile */
+  .btn-contratar-mobile{display:block;}
 }
 </style>
 </head>
 <body>
 
 <!-- Menu topo -->
-<nav>
+<nav id="topo-menu">
   <a href="#vantagens">Vantagens</a>
   <a href="#planos">Planos</a>
   <a href="#cliente">Área do Cliente</a>
@@ -261,6 +265,7 @@ footer{background:var(--escuro);color:#cbd5f5;padding:30px 20px;text-align:cente
 </div>
 
 <script>
+// Slider
 const slides=document.querySelectorAll('.slides img');
 const indicators=document.querySelectorAll('.slider-indicators span');
 let current=0;
@@ -272,6 +277,16 @@ indicators.forEach((ind,i)=>{
   ind.addEventListener('click',()=>{current=i;showSlide(current);});
 });
 setInterval(()=>{current=(current+1)%slides.length;showSlide(current);},3000);
+
+// Menu muda cor ao rolar
+window.addEventListener('scroll',()=>{
+  const nav=document.getElementById('topo-menu');
+  if(window.scrollY>50){
+    nav.classList.add('scrolled');
+  } else{
+    nav.classList.remove('scrolled');
+  }
+});
 </script>
 
 <!-- Vantagens -->
