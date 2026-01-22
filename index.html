@@ -10,6 +10,92 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
 <style>
+/* Bottom bar só no mobile */
+.bottom-bar{
+  display:none;
+}
+
+@media(max-width:768px){
+  .bottom-bar{
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    background:#ffffff;
+    display:flex;
+    justify-content:space-around;
+    padding:12px 5px;
+    box-shadow:0 -5px 20px rgba(0,0,0,.15);
+    z-index:9999;
+  }
+
+  .bottom-btn{
+    background:#004ab2;
+    color:#fff;
+    padding:12px 18px;
+    border-radius:30px;
+    font-weight:600;
+    border:none;
+    text-decoration:none;
+    font-family:'Montserrat', sans-serif;
+  }
+
+  /* espaço para a barra não cobrir conteúdo */
+  body{
+    padding-bottom:90px;
+  }
+}
+
+/* Dropdown contratar mobile */
+.contratar-mobile{
+  display:none;
+  position:fixed;
+  bottom:80px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#fff;
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,.25);
+  overflow:hidden;
+  z-index:9999;
+}
+.contratar-mobile a{
+  display:block;
+  padding:14px 30px;
+  text-decoration:none;
+  font-weight:600;
+  color:#004ab2;
+}
+.contratar-mobile a:hover{
+  background:#3376e6;
+  color:#fff;
+}
+
+
+.menu-contratar{
+  display:none;
+  position:absolute;
+  background:#ffffff;
+  border-radius:12px;
+  box-shadow:0 10px 30px rgba(0,0,0,.2);
+  padding:10px;
+  margin-top:10px;
+  z-index:9999;
+}
+
+.menu-contratar a{
+  display:block;
+  padding:12px 20px;
+  text-decoration:none;
+  color:#004ab2;
+  font-weight:600;
+  border-radius:8px;
+}
+
+.menu-contratar a:hover{
+  background:#e6f0ff;
+}
+
 :root{
   --azul:#004ab2;
   --azul-claro:#3376e6;
@@ -97,23 +183,53 @@ body{font-family:'Roboto', sans-serif;background:url('images/fundo-site.jpg') no
   z-index:2;
   box-shadow:0 5px 15px rgba(0,0,0,0.3);
 }
+<button id="btn-contratar" class="btn">Contratar Agora</button>
 
-/* Botões Contratar Agora */
-.hero-botoes{
+<div id="menu-contratar" class="menu-contratar">
+  <a href="https://wa.me/5586999146612" target="_blank">📍 Piauí</a>
+  <a href="https://wa.me/559899685797" target="_blank">📍 Maranhão</a>
+</div>
+
+
+/* Dropdown Contratar Agora */
+.dropdown{
+  position:relative;
+  display:inline-block;
   text-align:center;
-  margin:15px 0;
 }
-.hero-botoes .btn{
+.dropdown-btn{
   background:var(--azul);
   color:#fff;
   padding:15px 35px;
   border-radius:40px;
   font-weight:600;
-  margin:10px auto;
-  display:inline-block;
+  border:none;
+  cursor:pointer;
   transition:.3s;
+  font-family:'Montserrat', sans-serif;
 }
-.hero-botoes .btn:hover{background:var(--btn-hover);transform:scale(1.05);}
+.dropdown-btn:hover{background:var(--btn-hover);}
+.dropdown-content{
+  display:none;
+  position:absolute;
+  background:#fff;
+  min-width:160px;
+  border-radius:15px;
+  box-shadow:0 5px 20px rgba(0,0,0,.2);
+  margin-top:10px;
+  z-index:1000;
+  overflow:hidden;
+}
+.dropdown-content a{
+  color:#004ab2;
+  padding:12px 20px;
+  display:block;
+  text-decoration:none;
+  font-weight:600;
+  transition:.2s;
+}
+.dropdown-content a:hover{background:var(--azul-claro);color:#fff;}
+.dropdown.show .dropdown-content{display:block;}
 
 /* Slider */
 .slider{
@@ -203,14 +319,12 @@ section h2{
 #cliente .card{background:rgba(255,255,255,.1);color:#fff;box-shadow:none;border-top:none;}
 
 /* Botões fixos */
-.btn-cliente-fixo,.btn-instagram-fixo,.btn-contratar-mobile{
+.btn-cliente-fixo,.btn-instagram-fixo{
   position:fixed;right:15px;padding:15px 18px;border-radius:40px;font-weight:600;z-index:999;box-shadow:0 5px 20px rgba(0,0,0,.3);cursor:pointer;text-decoration:none;font-family:'Montserrat', sans-serif;transition:.3s;color:#fff;text-align:center;}
 .btn-cliente-fixo{top:45%;background:var(--azul);}
 .btn-instagram-fixo{top:55%;background:#E1306C;}
-.btn-contratar-mobile{bottom:20px;right:50%;transform:translateX(50%);background:var(--azul);display:none;}
 .btn-cliente-fixo:hover{background:var(--btn-hover);}
 .btn-instagram-fixo:hover{opacity:0.85;}
-.btn-contratar-mobile:hover{background:var(--btn-hover);}
 
 /* Footer */
 footer{background:var(--escuro);color:#cbd5f5;padding:30px 20px;text-align:center;}
@@ -229,15 +343,39 @@ footer{background:var(--escuro);color:#cbd5f5;padding:30px 20px;text-align:cente
     font-size:0.9rem;
     padding:8px 20px;
   }
-  .hero-botoes .btn{width:90%;max-width:250px;padding:12px 0;font-size:1rem;}
+  .dropdown-btn{width:90%; max-width:250px; padding:12px 0; font-size:1rem;}
   .slider{max-width:95%;}
   .slides img{height:auto;object-fit:contain;}
   section{padding:20px;}
   .cards{grid-template-columns:1fr;gap:15px;}
   #planos .plano{padding:20px;}
   #cliente .card{padding:15px;}
-  .btn-contratar-mobile{display:block;}
 }
+/* ===== MENU CONTRATAR AGORA ===== */
+.menu-contratar{
+  display:none;
+  position:absolute;
+  background:#ffffff;
+  border-radius:12px;
+  box-shadow:0 10px 30px rgba(0,0,0,.2);
+  padding:10px;
+  margin-top:10px;
+  z-index:9999;
+}
+
+.menu-contratar a{
+  display:block;
+  padding:12px 20px;
+  text-decoration:none;
+  color:#004ab2;
+  font-weight:600;
+  border-radius:8px;
+}
+
+.menu-contratar a:hover{
+  background:#e6f0ff;
+}
+
 </style>
 </head>
 <body>
@@ -255,7 +393,6 @@ footer{background:var(--escuro);color:#cbd5f5;padding:30px 20px;text-align:cente
 <!-- Botões fixos -->
 <a class="btn-cliente-fixo" href="#cliente">Área do Cliente</a>
 <a class="btn-instagram-fixo" href="https://www.instagram.com/linknet_luzilandia?igsh=NDl2d3FlMHZpcTc=" target="_blank">Instagram</a>
-<a class="btn-contratar-mobile" href="https://wa.me/5586999146612" target="_blank">Contratar Agora</a>
 
 <!-- Banner -->
 <header>
@@ -265,10 +402,15 @@ footer{background:var(--escuro);color:#cbd5f5;padding:30px 20px;text-align:cente
   </div>
 </header>
 
-<!-- Botões Contratar Agora -->
+<!-- Botão Contratar Agora com Dropdown -->
 <div class="hero-botoes">
-  <a class="btn" href="https://wa.me/5586999146612" target="_blank">Contratar Agora PI</a>
-  <a class="btn" href="https://wa.me/559899685797" target="_blank">Contratar Agora MA</a>
+  <div class="dropdown">
+    <button class="dropdown-btn">Contratar Agora ▼</button>
+    <div class="dropdown-content">
+      <a href="https://wa.me/5586999146612" target="_blank">Piauí</a>
+      <a href="https://wa.me/559899685797" target="_blank">Maranhão</a>
+    </div>
+  </div>
 </div>
 
 <!-- Slider -->
@@ -286,6 +428,7 @@ footer{background:var(--escuro);color:#cbd5f5;padding:30px 20px;text-align:cente
 </div>
 
 <script>
+
 // Slider
 const slides=document.querySelectorAll('.slides img');
 const indicators=document.querySelectorAll('.slider-indicators span');
@@ -303,6 +446,14 @@ setInterval(()=>{current=(current+1)%slides.length;showSlide(current);},3000);
 const menuBtn=document.getElementById('menu-btn');
 const menuExpand=document.getElementById('menu-expand');
 menuBtn.addEventListener('click',()=>menuExpand.classList.toggle('show'));
+
+// Dropdown Contratar Agora
+const dropdownBtn=document.querySelector('.dropdown-btn');
+const dropdown=document.querySelector('.dropdown');
+dropdownBtn.addEventListener('click',()=>{dropdown.classList.toggle('show');});
+window.addEventListener('click', e=>{
+  if(!dropdown.contains(e.target)){dropdown.classList.remove('show');}
+});
 
 // Parallax Banner
 window.addEventListener('scroll',()=>{
