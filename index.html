@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Linknet Internet Fibra Óptica</title>
+<meta name="description" content="Provedor de internet fibra óptica em Luzilândia e Magalhães de Almeida">
+
+<!-- Fontes modernas -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+<link rel="icon" href="images/favicon.png" type="image/png">
+<link rel="apple-touch-icon" href="images/favicon.png">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#004ab2">
+
+
+<style>
+/* Bottom bar só no mobile */
+.bottom-bar{
+  display:none;
+}
+
+@media(max-width:768px){
+  .bottom-bar{
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    background:#ffffff;
+    display:flex;
+    justify-content:space-around;
+    padding:12px 5px;
+    box-shadow:0 -5px 20px rgba(0,0,0,.15);
+    z-index:9999;
+  }
+
+  .bottom-btn{
+    background:#004ab2;
+    color:#fff;
+    padding:12px 18px;
+    border-radius:30px;
+    font-weight:600;
+    border:none;
+    text-decoration:none;
+    font-family:'Montserrat', sans-serif;
+  }
+
+  /* espaço para a barra não cobrir conteúdo */
+  body{
+    padding-bottom:90px;
+  }
+}
+
+/* Dropdown contratar mobile */
+.contratar-mobile{
+  display:none;
+  position:fixed;
+  bottom:80px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#fff;
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,.25);
+  overflow:hidden;
+  z-index:9999;
+}
+.contratar-mobile a{
+  display:block;
+  padding:14px 30px;
+  text-decoration:none;
+  font-weight:600;
+  color:#004ab2;
+}
+.contratar-mobile a:hover{
+  background:#3376e6;
+  color:#fff;
+}
+
+}
+
+.menu-contratar a{
+  display:block;
+  padding:12px 20px;
+  text-decoration:none;
+  color:#004ab2;
+  font-weight:600;
+  border-radius:8px;
+}
+
+.menu-contratar a:hover{
+  background:#e6f0ff;
+}
+
+:root{
+  --azul:#004ab2;
+  --azul-claro:#3376e6;
+  --escuro:#012a5e;
+  --cliente-bg:#004ab2;
+  --cliente-text:#ffffff;
+  --card-bg:rgba(230,240,255,0.9);
+  --section-bg:rgba(245,249,255,0.85);
+  --btn-hover:#3376e6;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Roboto', sans-serif;background:url('images/fundo-site.jpg') no-repeat center/cover;background-size:cover;color:#0f172a;}
+
+/* Menu botão */
+.menu-btn{
+  position:fixed;
+  top:15px;
+  right:15px;
+  z-index:999;
+  width:45px;
+  height:45px;
+  background:var(--azul);
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  color:#fff;
+  font-size:1.5rem;
+  box-shadow:0 5px 20px rgba(0,0,0,.3);
+  transition:.3s;
+}
+.menu-btn:hover{background:var(--btn-hover);}
+
+/* Menu expandido */
+.menu-expand{
+  position:fixed;
+  top:0;
+  right:0;
+  width:200px;
+  height:100%;
+  background:var(--azul);
+  transform:translateX(100%);
+  transition:transform .3s;
+  display:flex;
+  flex-direction:column;
+  padding-top:80px;
+  gap:20px;
+  z-index:998;
+}
+.menu-expand a{
+  color:#fff;
+  text-decoration:none;
+  font-weight:600;
+  text-align:center;
+  font-family:'Montserrat', sans-serif;
+}
+.menu-expand.show{transform:translateX(0);}
+
+/* Banner */
+.banner-container{
+  position:relative;
+  width:100%;
+  max-height:500px;
+  overflow:hidden;
+}
+.banner-container .banner-img{
+  width:100%;
+  height:auto;
+  object-fit:contain;
+  display:block;
+}
+.client-bar-banner{
+  position:absolute;
+  bottom:15px;
+  left:50%;
+  transform:translateX(-50%);
+  background:rgba(0,74,178,0.7);
+  padding:10px 25px;
+  border-radius:25px;
+  font-weight:600;
+  text-align:center;
+  color:#fff;
+  z-index:2;
+  box-shadow:0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* Dropdown Contratar Agora */
+.dropdown{
+  position:relative;
+  display:inline-block;
+  text-align:center;
+}
+.dropdown-btn{
+  background:var(--azul);
+  color:#fff;
+  padding:15px 35px;
+  border-radius:40px;
+  font-weight:600;
+  border:none;
+  cursor:pointer;
+  transition:.3s;
+  font-family:'Montserrat', sans-serif;
+}
+.dropdown-btn:hover{background:var(--btn-hover);}
+.dropdown-content{
+  display:none;
+  position:absolute;
+  background:#fff;
+  min-width:160px;
+  border-radius:15px;
+  box-shadow:0 5px 20px rgba(0,0,0,.2);
+  margin-top:10px;
+  z-index:1000;
+  overflow:hidden;
+}
+.dropdown-content a{
+  color:#004ab2;
+  padding:12px 20px;
+  display:block;
+  text-decoration:none;
+  font-weight:600;
+  transition:.2s;
+}
+.dropdown-content a:hover{background:var(--azul-claro);color:#fff;}
+.dropdown.show .dropdown-content{display:block;}
+
+/* Slider */
+.slider{
+  max-width:95%;
+  margin:30px auto;
+  position:relative;
+  overflow:hidden;
+  border-radius:22px;
+  box-shadow:0 15px 35px rgba(0,0,0,.25);
+}
+.slides{
+  position:relative;
+}
+.slides img{
+  width:100%;
+  height:auto;
+  object-fit:contain;
+  display:block;
+  position:absolute;
+  top:0;
+  left:0;
+  opacity:0;
+  transition:opacity 1s ease-in-out;
+}
+.slides img.active{
+  opacity:1;
+  position:relative;
+}
+.slider-indicators{
+  position:absolute;
+  bottom:10px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:8px;
+}
+.slider-indicators span{
+  width:12px;
+  height:12px;
+  background:rgba(255,255,255,0.5);
+  border-radius:50%;
+  cursor:pointer;
+  transition:.3s;
+}
+.slider-indicators span.active{background:#fff;}
+
+/* Seções */
+section{
+  max-width:95%;
+  margin:40px auto;
+  padding:25px;
+  background:var(--section-bg);
+  border-radius:25px;
+}
+section h2{
+  text-align:center;
+  font-size:1.8rem;
+  margin-bottom:35px;
+  color:var(--azul);
+  font-family:'Montserrat', sans-serif;
+}
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:20px;
+}
+.card{
+  background:var(--card-bg);
+  border-radius:22px;
+  padding:25px;
+  text-align:center;
+  box-shadow:0 8px 25px rgba(0,74,178,.15);
+  transition:transform .3s, box-shadow .3s;
+}
+.card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 15px 40px rgba(0,74,178,.25);
+}
+.icon{font-size:2rem;color:var(--azul);margin-bottom:10px;display:block;}
+.velocidade{font-size:2rem;font-weight:800;color:var(--azul);margin-bottom:10px;}
+.preco{font-size:1.8rem;font-weight:800;color:#012a5e;margin-bottom:10px;}
+.beneficios{font-weight:600;color:var(--azul);margin-bottom:15px;}
+.tag{position:absolute;top:10px;right:-25px;background:linear-gradient(135deg,var(--azul),var(--btn-hover));color:#fff;padding:5px 45px;font-size:.8rem;font-weight:700;transform:rotate(45deg);}
+
+/* Área do Cliente */
+#cliente{background:var(--cliente-bg);color:#fff;border-radius:25px;padding:30px;}
+#cliente .card{background:rgba(255,255,255,.1);color:#fff;box-shadow:none;border-top:none;}
+
+/* Botões fixos */
+.btn-cliente-fixo,.btn-instagram-fixo{
+  position:fixed;right:15px;padding:15px 18px;border-radius:40px;font-weight:600;z-index:999;box-shadow:0 5px 20px rgba(0,0,0,.3);cursor:pointer;text-decoration:none;font-family:'Montserrat', sans-serif;transition:.3s;color:#fff;text-align:center;}
+.btn-cliente-fixo{top:45%;background:var(--azul);}
+.btn-instagram-fixo{top:55%;background:#E1306C;}
+.btn-cliente-fixo:hover{background:var(--btn-hover);}
+.btn-instagram-fixo:hover{opacity:0.85;}
+
+/* Footer */
+footer{background:var(--escuro);color:#cbd5f5;padding:30px 20px;text-align:center;}
+
+/* Mobile Responsivo */
+@media(max-width:768px){
+  body{background-size:cover;background-position:center;}
+  .banner-container{max-height:320px;}
+  .banner-container .banner-img{max-height:320px;}
+  .client-bar-banner{
+    position:relative; 
+    bottom:auto;
+    left:auto;
+    transform:none;
+    margin:10px auto;
+    font-size:0.9rem;
+    padding:8px 20px;
+  }
+  .dropdown-btn{width:90%; max-width:250px; padding:12px 0; font-size:1rem;}
+  .slider{max-width:95%;}
+  .slides img{height:auto;object-fit:contain;}
+  section{padding:20px;}
+  .cards{grid-template-columns:1fr;gap:15px;}
+  #planos .plano{padding:20px;}
+  #cliente .card{padding:15px;}
+}
+/* ===== CONTRATAR AGORA ===== */
+.contratar-wrapper{
+  position:relative;
+  display:inline-block;
+}
+
+.menu-contratar{
+  display:none;
+  position:absolute;
+  top:100%;
+  left:50%;
+  transform:translateX(-50%);
+  margin-top:10px;
+  background:#ffffff;
+  border-radius:12px;
+  box-shadow:0 10px 30px rgba(0,0,0,.2);
+  padding:10px;
+  z-index:9999;
+  min-width:180px;
+}
+
+.menu-contratar a{
+  display:block;
+  padding:12px 20px;
+  text-decoration:none;
+  color:#004ab2;
+  font-weight:600;
+  border-radius:8px;
+}
+
+.menu-contratar a:hover{
+  background:#e6f0ff;
+}
+.hero-botoes{
+  display:flex;
+  justify-content:center;
+  margin:30px 0;
+}
+
+</style>
+</head>
+<body>
+
+<!-- Botão Menu -->
+<div class="menu-btn" id="menu-btn">&#9776;</div>
+
+<!-- Menu Expandido -->
+<div class="menu-expand" id="menu-expand">
+  <a href="#vantagens">Vantagens</a>
+  <a href="#planos">Planos</a>
+  <a href="#cliente">Área do Cliente</a>
+</div>
+
+<!-- Botões fixos -->
+<a class="btn-cliente-fixo" href="#cliente">Área do Cliente</a>
+<a class="btn-instagram-fixo" href="https://www.instagram.com/linknet_luzilandia?igsh=NDl2d3FlMHZpcTc=" target="_blank">Instagram</a>
+
+<!-- Banner -->
+<header>
+  <div class="banner-container parallax">
+    <img src="images/banner-linknet.jpg" alt="Banner Linknet" class="banner-img">
+    <div class="client-bar-banner">📍 Atendemos Luzilândia (PI) e Magalhães de Almeida (MA)</div>
+  </div>
+</header>
+
+<!-- Botão Contratar Agora com Dropdown -->
+<div class="hero-botoes">
+  <div class="contratar-wrapper">
+    <button id="btn-contratar" class="dropdown-btn">
+      Contratar Agora ▼
+    </button>
+
+    <div id="menu-contratar" class="menu-contratar">
+      <a href="https://wa.me/5586999146612" target="_blank">📍 Piauí</a>
+      <a href="https://wa.me/559899685797" target="_blank">📍 Maranhão</a>
+    </div>
+  </div>
+</div>
+
+
+<!-- Slider -->
+<div class="slider">
+  <div class="slides">
+    <img src="images/slide1.jpg" alt="Slide 1" class="active">
+    <img src="images/slide2.jpg" alt="Slide 2">
+    <img src="images/slide3.jpg" alt="Slide 3">
+  </div>
+  <div class="slider-indicators">
+    <span class="active"></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const btn = document.getElementById("btn-contratar");
+  const menu = document.getElementById("menu-contratar");
+
+  btn.addEventListener("click", function (e) {
+    e.stopPropagation();
+    menu.style.display = menu.style.display === "block" ? "none" : "block";
+  });
+
+  document.addEventListener("click", function () {
+    menu.style.display = "none";
+  });
+});
+</script>
+
+<!-- Vantagens -->
+<section id="vantagens">
+<h2>Por que escolher a Linknet?</h2>
+<div class="cards">
+  <div class="card"><span class="icon">🚀</span><strong>Fibra 100%</strong><br>Velocidade real sem oscilações</div>
+  <div class="card"><span class="icon">📶</span><strong>Wi-Fi 6</strong><br>Mais alcance e desempenho</div>
+  <div class="card"><span class="icon">🛠️</span><strong>Suporte Local</strong><br>Atendimento rápido e humano</div>
+  <div class="card"><span class="icon">⚡</span><strong>Instalação Grátis</strong><br>Conectamos você sem custo</div>
+</div>
+</section>
+
+<!-- Planos -->
+<section id="planos">
+<h2>Planos</h2>
+<div class="cards">
+  <div class="card plano">
+    <div class="velocidade">300 Mega</div>
+    <div class="preco">R$ 89,90</div>
+    <div class="beneficios">✔ Instalação Grátis<br>✔ Wi-Fi 6</div>
+    <a class="btn" href="https://wa.me/5586999146612" target="_blank">Contratar PI</a>
+    <a class="btn" href="https://wa.me/559899685797" target="_blank">Contratar MA</a>
+  </div>
+  <div class="card plano" style="position:relative">
+    <div class="tag">MAIS VENDIDO</div>
+    <div class="velocidade">700 Mega</div>
+    <div class="preco">R$ 99,90</div>
+    <div class="beneficios">✔ Instalação Grátis<br>✔ Wi-Fi 6</div>
+    <a class="btn" href="https://wa.me/5586999146612" target="_blank">Contratar PI</a>
+    <a class="btn" href="https://wa.me/559899685797" target="_blank">Contratar MA</a>
+  </div>
+  <div class="card plano">
+    <div class="velocidade">900 Mega</div>
+    <div class="preco">R$ 129,90</div>
+    <div class="beneficios">✔ Instalação Grátis<br>✔ Wi-Fi 6</div>
+    <a class="btn" href="https://wa.me/5586999146612" target="_blank">Contratar PI</a>
+    <a class="btn" href="https://wa.me/559899685797" target="_blank">Contratar MA</a>
+  </div>
+</div>
+</section>
+
+<!-- Área do Cliente -->
+<section id="cliente">
+<h2>Área do Cliente</h2>
+<div class="cards">
+  <div class="card"><span class="icon">📄</span><strong>2ª Via de Boleto</strong><br><br><a class="btn" href="https://linknet.sistemagesprov.dev.br/central/login" target="_blank">Acessar</a></div>
+  <div class="card"><span class="icon">📊</span><strong>Teste de Velocidade</strong><br><br><a class="btn" href="https://www.speedtest.net/pt" target="_blank">Testar Agora</a></div>
+  <div class="card"><span class="icon">💬</span><strong>Suporte</strong><br><br><a class="btn" href="https://wa.me/5586999146612" target="_blank">WhatsApp PI</a> <a class="btn" href="https://wa.me/559899685797" target="_blank">WhatsApp MA</a></div>
+</div>
+</section>
+
+<footer>
+<p>© 2026 Linknet Luzilândia</p>
+</footer>
+
+</body>
+</html>
