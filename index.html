@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Linknet Luzilândia</title>
+<meta name="description" content="Provedor de internet fibra óptica em Luzilândia e Magalhães de Almeida">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+:root{
+  --azul-escuro:#0066ff;
+  --azul-medio:#2a6fd1;
+  --azul-claro:#6aa0f8;
+  --escuro:#012055;
+  --cliente-bg:#0050d1;
+  --cliente-text:#ffffff;
+  --card-bg:#f7faff;
+  --btn-hover:#2a6fd1;
+  --texto-principal:#0a1a3a;
+}
+
+/* Reset e base */
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:'Roboto', sans-serif;
+  background: url('images/fundo-site.jpg') center/cover no-repeat;
+  color: var(--texto-principal);
+  scroll-behavior: smooth;
+}
+a{text-decoration:none;transition:.3s;}
+.btn{
+  font-family:'Montserrat', sans-serif;font-weight:600;border-radius:40px;padding:15px 32px;
+  color:#fff;background:var(--azul-escuro);display:inline-block;margin:5px;transition:.3s;text-align:center;
+}
+.btn:hover{background:var(--btn-hover);transform:scale(1.05);}
+
+/* Banner */
+header{
+  background: url('images/banner-linknet.jpg') center top/cover no-repeat;
+  width:100%;height:400px;position: relative;
+}
+
+/* Nav topo */
+.topo{
+  max-width:1200px;margin:auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;
+  gap:20px;position:absolute;top:15px;left:0;right:0;padding:0 20px;z-index:2;
+}
+nav a{color:#fff;margin:0 8px;font-weight:500;font-family:'Roboto', sans-serif;font-size:0.95rem;}
+nav a:hover{color:var(--azul-claro);}
+
+/* Barra sobre o banner */
+.client-bar-banner {
+  position: absolute;
+  top:50%;
+  left:20px;
+  transform: translateY(-50%);
+  background: rgba(0, 74, 178, 0.85);
+  color: #fff;
+  padding: 14px 25px;
+  border-radius: 25px;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+  cursor: default;
+}
+.client-bar-banner:hover {
+  transform: translateY(-52%);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+}
+
+/* Contratar Agora abaixo do banner */
+.hero-botoes{text-align:center;margin:20px 0;}
+.hero-botoes .btn{margin:10px;font-size:1rem;padding:12px 28px;}
+
+/* Slider */
+.slider {max-width:1000px;width:95%;height:300px;margin:40px auto;overflow:hidden;border-radius:22px;box-shadow:0 25px 50px rgba(0,0,0,.2);position:relative;}
+.slides {position: relative;height:100%;}
+.slides img {width:100%;height:100%;object-fit:cover;object-position:center;position:absolute;top:0;left:0;opacity:0;transition:opacity 1s ease-in-out;}
+.slides img.active {opacity:1;position:relative;}
+.slider-indicators {position:absolute; bottom:10px; left:50%; transform:translateX(-50%); display:flex; gap:6px; z-index:10;}
+.slider-indicators span { width:10px;height:10px;background:rgba(255,255,255,0.5);border-radius:50%;cursor:pointer;transition:.3s;}
+.slider-indicators span.active{background:#fff;transform:scale(1.3);}
+
+/* Seções */
+section{
+  max-width:1000px;margin:50px auto;padding:40px 20px;background:rgba(255,255,255,0.95);border-radius:25px;
+  font-family:'Roboto', sans-serif;opacity:0;transform:translateY(30px);transition: all 0.8s ease-out;
+}
+section.visible{opacity:1;transform:translateY(0);}
+section h2{text-align:center;font-size:2rem;margin-bottom:35px;color:var(--azul-escuro);font-family:'Montserrat', sans-serif;}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;}
+.card{background:var(--card-bg);border-radius:22px;padding:25px 20px;text-align:center;
+box-shadow:0 10px 30px rgba(0,74,178,.15);border-top:6px solid var(--azul-escuro);font-family:'Roboto', sans-serif;transition:.3s;cursor:pointer;}
+.card:hover{transform:translateY(-6px);box-shadow:0 18px 35px rgba(0,74,178,.2);}
+.icon{font-size:2rem;color:var(--azul-escuro);margin-bottom:10px;display:block;}
+
+/* Planos */
+#planos .plano{background:var(--card-bg);border-radius:28px;padding:35px 25px;text-align:center;box-shadow:0 15px 40px rgba(0,74,178,.12);transition:.3s;}
+#planos .plano:hover{transform:translateY(-6px);box-shadow:0 20px 45px rgba(0,74,178,.2);}
+.velocidade{font-size:2rem;font-weight:800;color:var(--azul-escuro);font-family:'Montserrat', sans-serif;}
+.preco{font-size:1.8rem;font-weight:800;color:var(--escuro);font-family:'Montserrat', sans-serif;}
+.beneficios{margin:20px 0;font-weight:600;color:var(--azul-medio);}
+.tag{position:absolute;top:15px;right:-30px;background:linear-gradient(135deg,var(--azul-escuro),var(--btn-hover));color:#fff;padding:6px 50px;font-size:.75rem;font-weight:700;transform:rotate(45deg);}
+
+/* Área do cliente */
+#cliente{background:var(--cliente-bg);color:var(--cliente-text);border-radius:25px;box-shadow:0 15px 45px rgba(0,0,0,.2);padding:40px 20px;}
+#cliente .card{background:rgba(255,255,255,.1);color:#fff;box-shadow:none;border-top:none;transition:.3s;}
+#cliente .card:hover{transform:translateY(-6px);}
+
+/* Footer */
+footer{background:var(--escuro);color:#cbd5f5;padding:40px 15px;text-align:center;font-family:'Roboto', sans-serif;}
+
+/* Botões fixos */
+.btn-cliente-fixo{position:fixed;top:50%;right:15px;transform:translateY(-50%);background:var(--azul-escuro);color:#fff;padding:12px 18px;border-radius:40px;font-weight:600;z-index:999;box-shadow:0 5px 20px rgba(0,0,0,.3);cursor:pointer;transition:.3s;text-decoration:none;font-family:'Montserrat', sans-serif;}
+.btn-cliente-fixo:hover{background:var(--btn-hover);}
+.btn-instagram-fixo{position:fixed;top:60%;right:15px;transform:translateY(-50%);background:#E1306C;color:#fff;padding:12px;font-size:20px;border-radius:50%;text-align:center;z-index:999;box-shadow:0 5px 20px rgba(0,0,0,.3);cursor:pointer;transition:.3s;}
+.btn-instagram-fixo:hover{background:#c72e63;transform:scale(1.2);}
+
+/* Mobile */
+@media(max-width:768px){
+  header{height:300px;}
+  .slider{height:250px;}
+  .slides img{height:250px;}
+  .hero-botoes .btn{padding:10px 20px;font-size:0.95rem;}
+  section{padding:30px 15px;margin:30px 10px;}
+  nav a{font-size:0.85rem;margin:0 6px;}
+  #planos .plano{padding:30px 15px;}
+  .client-bar-banner{
+    top:10%;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:0.9rem;
+    padding:10px 20px;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- Botões fixos -->
+<a class="btn-cliente-fixo" href="#cliente">Área do Cliente</a>
+<a class="btn-instagram-fixo" href="https://www.instagram.com/linknet_luzilandia?igsh=NDl2d3FlMHZpcTc=" target="_blank"><i class="fab fa-instagram"></i></a>
+
+<header>
+  <div class="topo">
+    <nav>
+      <a href="#vantagens">Vantagens</a>
+      <a href="#planos">Planos</a>
+      <a href="#cliente">Área do Cliente</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </div>
+
+  <!-- Barra sobre o banner -->
+  <div class="client-bar-banner">
+     Atendemos 📍Luzilândia (PI) e 📍Magalhães de Almeida (MA)
+  </div>
+</header>
+
+<!-- Botões Contratar Agora abaixo do banner -->
+<div class="hero-botoes">
+  <a class="btn" href="https://wa.me/5586999146612" target="_blank">Contratar Agora PI</a>
+  <a class="btn" href="https://wa.me/5598987654321" target="_blank">Contratar Agora MA</a>
+</div>
+
+<!-- Slider -->
+<div class="slider">
+  <div class="slides">
+    <img src="images/slide1.jpg" alt="Slide 1" class="active">
+    <img src="images/slide2.jpg" alt="Slide 2">
+    <img src="images/slide3.jpg" alt="Slide 3">
+  </div>
+  <div class="slider-indicators">
+    <span class="active"></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+
+<section id="vantagens">
+  <h2>Por que escolher a Linknet?</h2>
+  <div class="cards">
+    <div class="card"><span class="icon">🚀</span><strong>Fibra 100%</strong><br>Velocidade real sem oscilações</div>
+    <div class="card"><span class="icon">📶</span><strong>Wi-Fi 6</strong><br>Mais alcance e desempenho</div>
+    <div class="card"><span class="icon">🛠️</span><strong>Suporte Local</strong><br>Atendimento rápido e humano</div>
+    <div class="card"><span class="icon">⚡</span><strong>Instalação Grátis</strong><br>Conectamos você sem custo</div>
+  </div>
+</section>
+
+<section id="planos">
+  <h2>Planos</h2>
+  <div class="cards">
+    <div class="plano">
+      <div class="velocidade">300 Mega</div>
+      <div class="preco">R$ 89,90</div>
+      <div class="beneficios">✔ Instalação Grátis<br>✔ Wi-Fi 6</div>
+      <a class="btn" href="https://wa.me/5586999146612" target="_blank">Contratar PI</a>
+      <a class="btn" href="https://wa.me/5598987654321" target="_blank">Contratar MA</a>
+    </div>
+    <div class="plano" style="position:relative">
+      <div class="tag">MAIS VENDIDO</div>
+      <div class="velocidade">700 Mega</div>
+      <div class="preco">R$ 99,90</div>
+      <div class="beneficios">✔ Instalação Grátis<br>✔ Wi-Fi 6</div>
+      <a class="btn" href="https://wa.me/5586999146612" target="_blank">Contratar PI</a>
+      <a class="btn" href="https://wa.me/5598987654321" target="_blank">Contratar MA</a>
+    </div>
+    <div class="plano">
+      <div class="velocidade">900 Mega</div>
+      <div class="preco">R$ 129,90</div>
+      <div class="beneficios">✔ Instalação Grátis<br>✔ Wi-Fi 6</div>
+      <a class="btn" href="https://wa.me/5586999146612" target="_blank">Contratar PI</a>
+      <a class="btn" href="https://wa.me/5598987654321" target="_blank">Contratar MA</a>
+    </div>
+  </div>
+</section>
+
+<section id="cliente">
+  <h2>Área do Cliente</h2>
+  <div class="cards">
+    <div class="card"><span class="icon">📄</span><strong>2ª Via de Boleto</strong><br>Emita sua fatura online<br><br><a class="btn" href="https://linknet.sistemagesprov.dev.br/central/login" target="_blank">Acessar</a></div>
+    <div class="card"><span class="icon">📊</span><strong>Teste de Velocidade</strong><br>Verifique sua conexão<br><br><a class="btn" href="https://www.speedtest.net/pt" target="_blank">Testar Agora</a></div>
+    <div class="card"><span class="icon">💬</span><strong>Suporte</strong><br>Fale com nosso atendimento<br><br><a class="btn" href="https://wa.me/5586999146612" target="_blank">WhatsApp PI</a> <a class="btn" href="https://wa.me/5598987654321" target="_blank">WhatsApp MA</a></div>
+  </div>
+</section>
+
+<footer id="contato">
+  <p>© 2026 Linknet Luzilândia</p>
+</footer>
+
+<script>
+/* Slider */
+const slides = document.querySelectorAll('.slides img');
+const indicators = document.querySelectorAll('.slider-indicators span');
+let current = 0;
+function showSlide(index){
+  slides.forEach((slide,i)=>slide.classList.toggle('active', i===index));
+  indicators.forEach((ind,i)=>ind.classList.toggle('active', i===index));
+}
+indicators.forEach((ind,i)=>ind.addEventListener('click',()=>{current=i; showSlide(current);}));
+setInterval(()=>{current=(current+1)%slides.length; showSlide(current);}, 3000);
+
+/* Scroll animation */
+const sections = document.querySelectorAll('section');
+window.addEventListener('scroll', ()=>{
+  const trigger = window.innerHeight*0.85;
+  sections.forEach(section=>{
+    if(section.getBoundingClientRect().top < trigger) section.classList.add('visible');
+  });
+});
+</script>
+
+</body>
+</html>
