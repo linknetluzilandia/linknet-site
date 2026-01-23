@@ -516,92 +516,76 @@ footer{background:var(--escuro);color:#cbd5f5;padding:30px 20px;text-align:cente
   border-radius: 2px;
 }
 
+/* ===== CARDS VANTAGENS MODERNOS ===== */
 .cards-modern {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 25px;
+  justify-items: center;
 }
 
 .card-modern {
   position: relative;
-  background-size: cover;
-  background-position: center;
   border-radius: 20px;
-  padding: 25px;
-  height: 250px;
+  padding: 40px 20px 20px 20px; /* espaço para ícone flutuante */
+  min-height: 220px;
+  background: linear-gradient(135deg, #004ab2, #3376e6);
   color: #fff;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  box-shadow: 0 15px 35px rgba(0,74,178,0.15);
-  transition: transform 0.4s, box-shadow 0.4s, filter 0.4s;
-  cursor: pointer;
-  overflow: hidden;
-}
-
-.card-modern .overlay {
-  position: absolute;
-  top:0;
-  left:0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0));
-  border-radius: 20px;
-  transition: background 0.4s;
-}
-
-.card-modern h3, .card-modern p {
-  position: relative;
-  z-index: 2;
-  margin: 0;
-}
-
-.card-modern h3 {
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
   font-family: 'Montserrat', sans-serif;
-  font-size: 1.3rem;
-  margin-bottom: 8px;
+  font-weight: 600;
+  box-shadow: 0 15px 35px rgba(0,74,178,0.15);
+  transition: transform 0.4s, box-shadow 0.4s;
 }
 
-.card-modern p {
-  font-family: 'Roboto', sans-serif;
-  font-size: 0.95rem;
-  line-height: 1.4;
-}
-
+/* Ícone flutuante acima do card */
 .card-modern .icon-overlay {
   position: absolute;
-  top: 15px;
-  left: 15px;
+  top: -25px; /* acima do card */
+  background: #fff;
+  color: #004ab2;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 2rem;
-  z-index: 2;
-  transition: transform 0.4s;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+  transition: transform 0.3s;
 }
 
 /* Hover moderno */
 .card-modern:hover {
-  transform: translateY(-12px);
-  box-shadow: 0 20px 45px rgba(0,74,178,0.25);
-}
-
-.card-modern:hover .overlay {
-  background: linear-gradient(to top, rgba(0,0,0,0.45), rgba(0,0,0,0));
+  transform: translateY(-10px);
+  box-shadow: 0 25px 50px rgba(0,74,178,0.25);
 }
 
 .card-modern:hover .icon-overlay {
-  transform: scale(1.3) rotate(-15deg);
+  transform: scale(1.2);
 }
 
 /* Mobile Responsivo */
 @media(max-width:768px){
   .cards-modern {
     grid-template-columns: 1fr;
+    gap: 20px;
   }
+
   .card-modern {
-    height: 200px;
-    padding: 20px;
+    padding: 40px 15px 15px 15px;
+    min-height: 180px;
   }
+
   .card-modern .icon-overlay {
-    font-size: 1.8rem;
+    width: 50px;
+    height: 50px;
+    font-size: 1.6rem;
+    top: -20px;
   }
 }
 
@@ -1115,32 +1099,32 @@ Linknet Internet Fibra Óptica em Luzilândia e Magalhães de Almeida
 <!-- Vantagens Modernas -->
 <section id="vantagens" class="vantagens-modern">
   <h2>Por que escolher a Linknet?</h2>
-  <div class="cards-modern">
-    <div class="card-modern" style="background-image: url('https://images.unsplash.com/photo-1581091215368-2e4f868cc9d7?auto=format&fit=crop&w=500&q=80');">
-      <div class="overlay"></div>
-      <div class="icon-overlay">🚀</div>
-      <h3>Fibra 100%</h3>
-      <p>Velocidade real sem oscilações</p>
-    </div>
-    <div class="card-modern" style="background-image: url('https://images.unsplash.com/photo-1581091215361-798bbf1b1d9c?auto=format&fit=crop&w=500&q=80');">
-      <div class="overlay"></div>
-      <div class="icon-overlay">📶</div>
-      <h3>Wi-Fi 6</h3>
-      <p>Mais alcance e desempenho</p>
-    </div>
-    <div class="card-modern" style="background-image: url('https://images.unsplash.com/photo-1591696331111-1b29c34a2c3b?auto=format&fit=crop&w=500&q=80');">
-      <div class="overlay"></div>
-      <div class="icon-overlay">🛠️</div>
-      <h3>Suporte Local</h3>
-      <p>Atendimento rápido e humano</p>
-    </div>
-    <div class="card-modern" style="background-image: url('https://images.unsplash.com/photo-1602024722210-c93f5f9c3c2c?auto=format&fit=crop&w=500&q=80');">
-      <div class="overlay"></div>
-      <div class="icon-overlay">⚡</div>
-      <h3>Instalação Grátis</h3>
-      <p>Conectamos você sem custo</p>
-    </div>
+ <div class="cards-modern">
+  <div class="card-modern">
+    <div class="icon-overlay">🚀</div>
+    <h3>Fibra 100%</h3>
+    <p>Velocidade real sem oscilações</p>
   </div>
+
+  <div class="card-modern">
+    <div class="icon-overlay">📶</div>
+    <h3>Wi-Fi 6</h3>
+    <p>Mais alcance e desempenho</p>
+  </div>
+
+  <div class="card-modern">
+    <div class="icon-overlay">🛠️</div>
+    <h3>Suporte Local</h3>
+    <p>Atendimento rápido e humano</p>
+  </div>
+
+  <div class="card-modern">
+    <div class="icon-overlay">⚡</div>
+    <h3>Instalação Grátis</h3>
+    <p>Conectamos você sem custo</p>
+  </div>
+</div>
+
 </section>
 
 
@@ -1416,4 +1400,3 @@ document.addEventListener("DOMContentLoaded", () => {
 
 </body>
 </html>
-
