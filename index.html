@@ -2,6 +2,9 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://linknetluzilandia.com.br/">
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Linknet Internet Fibra Óptica</title>
@@ -389,6 +392,149 @@ footer{background:var(--escuro);color:#cbd5f5;padding:30px 20px;text-align:cente
   justify-content:center;
   margin:30px 0;
 }
+.menu-item{
+  position: relative;
+}
+
+#btn-boleto{
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 10px 0;
+  width: 100%;
+  text-align: left;
+}
+
+.submenu-boleto{
+  display: none;
+  background: #0b1c2d;
+  border-radius: 8px;
+  margin-top: 8px;
+  padding: 10px;
+}
+
+.submenu-boleto a{
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.submenu-boleto a:hover{
+  background: #143a5c;
+}
+
+.submenu-boleto.ativo{
+  display: block;
+}
+/* ===== MENU BOLETO ===== */
+.boleto-card{
+  position: relative;
+}
+
+.boleto-menu{
+  display: none;
+  margin-top: 12px;
+  background: rgba(255,255,255,.15);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.boleto-menu a{
+  display: block;
+  padding: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  color: #fff;
+  transition: .3s;
+}
+
+.boleto-menu a:hover{
+  background: rgba(255,255,255,.25);
+}
+
+.boleto-card.ativo .boleto-menu{
+  display: block;
+}
+/* ===== ANIMAÇÕES ÍCONES ===== */
+
+/* Ícone do boleto pulsando */
+.icon-boleto{
+  display:inline-block;
+  margin-right:8px;
+  animation:pulse 1.8s infinite;
+}
+
+@keyframes pulse{
+  0%{transform:scale(1);}
+  50%{transform:scale(1.15);}
+  100%{transform:scale(1);}
+}
+
+/* Seta gira quando menu abre */
+.boleto-card.ativo .seta{
+  transform:rotate(180deg);
+}
+
+.seta{
+  display:inline-block;
+  margin-left:8px;
+  transition:.3s;
+}
+
+/* Ícone localização com entrada suave */
+.icon-local{
+  margin-right:8px;
+  display:inline-block;
+  transition:.3s;
+}
+
+/* Hover elegante nos itens */
+.boleto-menu a{
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+
+.boleto-menu a:hover .icon-local{
+  transform:scale(1.3) rotate(-10deg);
+}
+
+/* Animação de aparecer do menu */
+.boleto-menu{
+  animation:fadeUp .3s ease;
+}
+
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(-8px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+.btn-install {
+  background: linear-gradient(135deg, #007bff, #00c6ff);
+  color: #fff;
+  border: none;
+  padding: 14px 22px;
+  font-size: 16px;
+  border-radius: 30px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0,0,0,.2);
+  animation: pulse 1.8s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
 
 </style>
 </head>
@@ -404,6 +550,10 @@ footer{background:var(--escuro);color:#cbd5f5;padding:30px 20px;text-align:cente
   <a href="#cliente">👤 Área do Cliente</a>
 </div>
 
+<button id="btnInstall" class="btn-install" style="display:none;">
+  📲 Baixar App
+</button>
+
 
 <!-- Botões fixos -->
 <a class="btn-cliente-fixo" href="#cliente">Área do Cliente</a>
@@ -416,6 +566,11 @@ footer{background:var(--escuro);color:#cbd5f5;padding:30px 20px;text-align:cente
     <div class="client-bar-banner">📍 Atendemos Luzilândia (PI) e Magalhães de Almeida (MA)</div>
   </div>
 </header>
+
+<h1 style="display:none;">
+Linknet Internet Fibra Óptica em Luzilândia e Magalhães de Almeida
+</h1>
+
 
 <!-- Botão Contratar Agora com Dropdown -->
 <div class="hero-botoes">
@@ -488,8 +643,27 @@ footer{background:var(--escuro);color:#cbd5f5;padding:30px 20px;text-align:cente
 <!-- Área do Cliente -->
 <section id="cliente">
 <h2>Área do Cliente</h2>
-<div class="cards">
-  <div class="card"><span class="icon">📄</span><strong>2ª Via de Boleto</strong><br><br><a class="btn" href="https://linknet.sistemagesprov.dev.br/central/login" target="_blank">Acessar</a></div>
+<div class="card boleto-card">
+  <span class="icon">📄</span>
+  <strong>2ª Via de Boleto</strong><br>
+  Emita sua fatura online<br><br>
+
+  <button class="btn btn-boleto" onclick="toggleBoletoMenu(event)">
+  <span class="icon-boleto">📄</span>
+  Escolher Região 
+  <span class="seta">▼</span>
+</button>
+
+
+  <div class="boleto-menu">
+    <a href="https://linknetluzilandia.mikweb.com.br/" target="_blank">
+      📍 Cliente Maranhão (MA)
+    </a>
+    <a href="https://linknet.sistemagesprov.dev.br/central/login" target="_blank">
+      📍 Cliente Piauí, 📍Pov.Formosa, 📍Pov.Porto Formoso, 📍Pov.Chapeu de Couro (PI)
+    </a>
+  </div>
+</div>
   <div class="card"><span class="icon">📊</span><strong>Teste de Velocidade</strong><br><br><a class="btn" href="https://www.speedtest.net/pt" target="_blank">Testar Agora</a></div>
   <div class="card"><span class="icon">💬</span><strong>Suporte</strong><br><br><a class="btn" href="https://wa.me/5586999146612" target="_blank">WhatsApp PI</a> <a class="btn" href="https://wa.me/559899685797" target="_blank">WhatsApp MA</a></div>
 </div>
@@ -533,6 +707,22 @@ document.addEventListener("DOMContentLoaded", function () {
   menuContratar.addEventListener("click", e => e.stopPropagation());
 
 });
+document.addEventListener("DOMContentLoaded", function(){
+
+  const btnBoleto = document.getElementById("btn-boleto");
+  const menuBoleto = document.getElementById("menu-boleto");
+
+  btnBoleto.addEventListener("click", function(e){
+    e.stopPropagation();
+    menuBoleto.classList.toggle("ativo");
+  });
+
+  document.addEventListener("click", function(){
+    menuBoleto.classList.remove("ativo");
+  });
+
+});
+
 </script>
 <script>
 if ("serviceWorker" in navigator) {
@@ -541,6 +731,60 @@ if ("serviceWorker" in navigator) {
       .then(reg => console.log("Service Worker registrado", reg))
       .catch(err => console.log("Erro no Service Worker", err));
   });
+}
+</script>
+<script>
+function toggleBoletoMenu(e){
+  e.stopPropagation();
+
+  const card = e.target.closest('.boleto-card');
+  card.classList.toggle('ativo');
+
+  document.addEventListener('click', function fechar(){
+    card.classList.remove('ativo');
+    document.removeEventListener('click', fechar);
+  });
+}
+</script>
+<script>
+let deferredPrompt;
+const btnInstall = document.getElementById('btnInstall');
+
+// Detecta Android / Desktop
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  btnInstall.style.display = 'inline-block';
+});
+
+// Clique no botão
+btnInstall.addEventListener('click', async () => {
+  if (!deferredPrompt) return;
+  deferredPrompt.prompt();
+  const { outcome } = await deferredPrompt.userChoice;
+  if (outcome === 'accepted') {
+    btnInstall.style.display = 'none';
+  }
+  deferredPrompt = null;
+});
+
+// Se já estiver instalado, esconde o botão
+window.addEventListener('appinstalled', () => {
+  btnInstall.style.display = 'none';
+});
+
+// iPhone (Safari)
+const isIOS = /iphone|ipad|ipod/i.test(window.navigator.userAgent);
+const isInStandaloneMode = ('standalone' in window.navigator) && window.navigator.standalone;
+
+if (isIOS && !isInStandaloneMode) {
+  btnInstall.style.display = 'inline-block';
+  btnInstall.innerHTML = '📲 Adicionar à Tela Inicial';
+  btnInstall.onclick = () => {
+    alert(
+      'No iPhone:\n\n1️⃣ Toque no botão de compartilhar\n2️⃣ Selecione "Adicionar à Tela de Início"'
+    );
+  };
 }
 </script>
 
