@@ -76,9 +76,6 @@
   background:#3376e6;
   color:#fff;
 }
-
-}
-
 .menu-contratar a{
   display:block;
   padding:12px 20px;
@@ -128,29 +125,42 @@ body{font-family:'Roboto', sans-serif;background:url('images/fundo-site.jpg') no
 .menu-btn:hover{background:var(--btn-hover);}
 
 /* Menu expandido */
+/* ===== MENU APP ===== */
 .menu-expand{
   position:fixed;
   top:0;
   right:0;
-  width:200px;
+  width:260px;
   height:100%;
-  background:var(--azul);
+  background:linear-gradient(180deg, #004ab2, #012a5e);
   transform:translateX(100%);
-  transition:transform .3s;
+  transition:transform .35s ease;
   display:flex;
   flex-direction:column;
-  padding-top:80px;
-  gap:20px;
+  padding-top:90px;
+  gap:15px;
   z-index:998;
 }
+
 .menu-expand a{
   color:#fff;
   text-decoration:none;
   font-weight:600;
-  text-align:center;
-  font-family:'Montserrat', sans-serif;
+  font-size:1.1rem;
+  padding:15px 25px;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  transition:.3s;
 }
-.menu-expand.show{transform:translateX(0);}
+
+.menu-expand a:hover{
+  background:rgba(255,255,255,.15);
+}
+
+.menu-expand.show{
+  transform:translateX(0);
+}
 
 /* Banner */
 .banner-container{
@@ -388,10 +398,11 @@ footer{background:var(--escuro);color:#cbd5f5;padding:30px 20px;text-align:cente
 
 <!-- Menu Expandido -->
 <div class="menu-expand" id="menu-expand">
-  <a href="#vantagens" onclick="document.getElementById('menu-expand').classList.remove('show')">Vantagens</a>
-  <a href="#planos">Planos</a>
-  <a href="#cliente">Área do Cliente</a>
+  <a href="#vantagens">🚀 Vantagens</a>
+  <a href="#planos">📦 Planos</a>
+  <a href="#cliente">👤 Área do Cliente</a>
 </div>
+
 
 <!-- Botões fixos -->
 <a class="btn-cliente-fixo" href="#cliente">Área do Cliente</a>
@@ -433,23 +444,6 @@ footer{background:var(--escuro);color:#cbd5f5;padding:30px 20px;text-align:cente
     <span></span>
   </div>
 </div>
-
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const btn = document.getElementById("btn-contratar");
-  const menu = document.getElementById("menu-contratar");
-
-  btn.addEventListener("click", function (e) {
-    e.stopPropagation();
-    menu.style.display = menu.style.display === "block" ? "none" : "block";
-  });
-
-  document.addEventListener("click", function () {
-    menu.style.display = "none";
-  });
-});
-</script>
-
 <!-- Vantagens -->
 <section id="vantagens">
 <h2>Por que escolher a Linknet?</h2>
@@ -506,22 +500,36 @@ document.addEventListener("DOMContentLoaded", function () {
 <script>
 document.addEventListener("DOMContentLoaded", function () {
 
-  /* ===== MENU HAMBÚRGUER ===== */
   const menuBtn = document.getElementById("menu-btn");
   const menu = document.getElementById("menu-expand");
+
+  const btnContratar = document.getElementById("btn-contratar");
+  const menuContratar = document.getElementById("menu-contratar");
 
   menuBtn.addEventListener("click", function (e) {
     e.stopPropagation();
     menu.classList.toggle("show");
   });
 
-  document.addEventListener("click", function () {
-    menu.classList.remove("show");
+  menu.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+      menu.classList.remove("show");
+    });
   });
 
-  menu.addEventListener("click", function (e) {
+  btnContratar.addEventListener("click", function (e) {
     e.stopPropagation();
+    menuContratar.style.display =
+      menuContratar.style.display === "block" ? "none" : "block";
   });
+
+  document.addEventListener("click", function () {
+    menu.classList.remove("show");
+    menuContratar.style.display = "none";
+  });
+
+  menu.addEventListener("click", e => e.stopPropagation());
+  menuContratar.addEventListener("click", e => e.stopPropagation());
 
 });
 </script>
