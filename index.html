@@ -774,11 +774,58 @@ footer{background:var(--escuro);color:#cbd5f5;padding:30px 20px;text-align:cente
 
 /* Mobile */
 @media(max-width:768px){
-  .slides-modern .slide {
-    height: 240px;
-    background-size: contain;
+  .slider-modern{
+    margin: 25px auto 15px auto;
   }
 }
+
+@media(max-width:768px){
+  .card-plano{
+    padding: 22px 18px;
+    border-radius: 26px;
+  }
+
+  .velocidade-plano{
+    margin-bottom: 6px;
+  }
+
+  .preco{
+    margin-bottom: 10px;
+  }
+
+  .beneficios{
+    line-height: 1.55;
+  }
+}
+
+
+  .cta-buttons{
+    display:flex;
+    gap:10px;
+    margin-top:15px;
+  }
+
+  .btn-plan{
+    flex:1;
+    text-align:center;
+    padding:12px 0;
+  }
+}
+@media(max-width:768px){
+  .card-modern .overlay{
+    background: linear-gradient(
+      to top,
+      rgba(0,0,0,.55),
+      rgba(0,0,0,.1)
+    );
+  }
+
+  .card-modern h3,
+  .card-modern p{
+    text-shadow: 0 2px 6px rgba(0,0,0,.35);
+  }
+}
+
 /* ===============================
    ÁREA DO CLIENTE MODERNA
 =============================== */
@@ -948,13 +995,15 @@ footer{background:var(--escuro);color:#cbd5f5;padding:30px 20px;text-align:cente
 
 /* Mobile */
 @media(max-width:768px){
-  .btn-contratar-modern {
-    width: 90%;
-    justify-content: center;
-    font-size: 1rem;
-    padding: 16px 0;
+  .hero-botoes{
+    margin: 20px 0 10px 0;
+  }
+
+  .btn-contratar-modern{
+    box-shadow: 0 12px 30px rgba(0,74,178,0.4);
   }
 }
+
 .btn-instagram-fixo{
   position: fixed;
   right: 15px;
