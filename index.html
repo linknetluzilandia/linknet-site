@@ -234,51 +234,6 @@ body{font-family:'Roboto', sans-serif;background:url('images/fundo-site.jpg') no
 .dropdown-content a:hover{background:var(--azul-claro);color:#fff;}
 .dropdown.show .dropdown-content{display:block;}
 
-/* Slider */
-.slider{
-  max-width:95%;
-  margin:30px auto;
-  position:relative;
-  overflow:hidden;
-  border-radius:22px;
-  box-shadow:0 15px 35px rgba(0,0,0,.25);
-}
-.slides{
-  position:relative;
-}
-.slides img{
-  width:100%;
-  height:auto;
-  object-fit:contain;
-  display:block;
-  position:absolute;
-  top:0;
-  left:0;
-  opacity:0;
-  transition:opacity 1s ease-in-out;
-}
-.slides img.active{
-  opacity:1;
-  position:relative;
-}
-.slider-indicators{
-  position:absolute;
-  bottom:10px;
-  left:50%;
-  transform:translateX(-50%);
-  display:flex;
-  gap:8px;
-}
-.slider-indicators span{
-  width:12px;
-  height:12px;
-  background:rgba(255,255,255,0.5);
-  border-radius:50%;
-  cursor:pointer;
-  transition:.3s;
-}
-.slider-indicators span.active{background:#fff;}
-
 /* Seções */
 section{
   max-width:95%;
@@ -322,8 +277,7 @@ section h2{
 #cliente .card{background:rgba(255,255,255,.1);color:#fff;box-shadow:none;border-top:none;}
 
 /* Botões fixos */
-.btn-cliente-fixo,.btn-instagram-fixo{
-  position:fixed;right:15px;padding:15px 18px;border-radius:40px;font-weight:600;z-index:999;box-shadow:0 5px 20px rgba(0,0,0,.3);cursor:pointer;text-decoration:none;font-family:'Montserrat', sans-serif;transition:.3s;color:#fff;text-align:center;}
+
 .btn-cliente-fixo{top:45%;background:var(--azul);}
 .btn-instagram-fixo{top:55%;background:#E1306C;}
 .btn-cliente-fixo:hover{background:var(--btn-hover);}
@@ -536,6 +490,497 @@ footer{background:var(--escuro);color:#cbd5f5;padding:30px 20px;text-align:cente
   100% { transform: scale(1); }
 }
 
+/* ===== Vantagens Modernas ===== */
+.vantagens-modern {
+  max-width: 95%;
+  margin: 50px auto;
+  text-align: center;
+  padding: 20px;
+}
+
+.vantagens-modern h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+  margin-bottom: 40px;
+  color: #004ab2;
+  position: relative;
+}
+
+.vantagens-modern h2::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #004ab2, #3376e6);
+  margin: 10px auto 0 auto;
+  border-radius: 2px;
+}
+
+.cards-modern {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 25px;
+}
+
+.card-modern {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+  padding: 25px;
+  height: 250px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  box-shadow: 0 15px 35px rgba(0,74,178,0.15);
+  transition: transform 0.4s, box-shadow 0.4s, filter 0.4s;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.card-modern .overlay {
+  position: absolute;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0));
+  border-radius: 20px;
+  transition: background 0.4s;
+}
+
+.card-modern h3, .card-modern p {
+  position: relative;
+  z-index: 2;
+  margin: 0;
+}
+
+.card-modern h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.3rem;
+  margin-bottom: 8px;
+}
+
+.card-modern p {
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.card-modern .icon-overlay {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  font-size: 2rem;
+  z-index: 2;
+  transition: transform 0.4s;
+}
+
+/* Hover moderno */
+.card-modern:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 20px 45px rgba(0,74,178,0.25);
+}
+
+.card-modern:hover .overlay {
+  background: linear-gradient(to top, rgba(0,0,0,0.45), rgba(0,0,0,0));
+}
+
+.card-modern:hover .icon-overlay {
+  transform: scale(1.3) rotate(-15deg);
+}
+
+/* Mobile Responsivo */
+@media(max-width:768px){
+  .cards-modern {
+    grid-template-columns: 1fr;
+  }
+  .card-modern {
+    height: 200px;
+    padding: 20px;
+  }
+  .card-modern .icon-overlay {
+    font-size: 1.8rem;
+  }
+}
+
+
+/* ===== PLANOS SUPER VISÍVEIS ===== */
+.planos-modern {
+  max-width: 1200px;
+  margin: 90px auto;
+  padding: 40px 20px;
+  background: linear-gradient(180deg, rgba(0,74,178,0.05), transparent);
+  border-radius: 40px;
+}
+
+.cards-planos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 35px;
+}
+
+/* CARD PADRÃO (CLARO) */
+.card-plano {
+  background: #ffffff;
+  border-radius: 32px;
+  padding: 40px 30px;
+  box-shadow: 0 20px 45px rgba(0,74,178,0.15);
+  text-align: center;
+  transition: all .4s ease;
+  position: relative;
+  color: #012a5e;
+}
+
+/* NOME DO PLANO */
+.nome-plano {
+  font-size: 1.7rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  color: #004ab2;
+}
+
+/* VELOCIDADE */
+.velocidade-plano {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #012a5e;
+}
+
+
+/* PREÇO */
+.preco {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #004ab2;
+  margin-bottom: 18px;
+}
+
+/* BENEFÍCIOS */
+.beneficios {
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: #334155;
+}
+
+/* BOTÃO */
+.btn-plan {
+  padding: 15px 28px;
+  border-radius: 40px;
+  font-weight: 800;
+  text-decoration: none;
+  background: #004ab2;
+  color: #fff;
+  transition: .3s;
+}
+
+/* ===== PLANO DESTAQUE (SEM ESCURECER) ===== */
+.card-plano.destaque {
+  border: 3px solid #004ab2;
+  box-shadow: 0 30px 70px rgba(0,74,178,0.25);
+  transform: scale(1.06);
+  background: linear-gradient(180deg, #ffffff, #f2f7ff);
+}
+
+/* SELO */
+.tag-plano {
+  position: absolute;
+  top: 18px;
+  right: -40px;
+  background: linear-gradient(135deg, #ff9800, #ffb74d);
+  color: #fff;
+  padding: 8px 50px;
+  font-weight: 800;
+  font-size: .85rem;
+  border-radius: 30px;
+  transform: rotate(20deg);
+}
+
+/* ===== Slider Moderno ===== */
+.slider-modern {
+  position: relative;
+  max-width: 95%;
+  margin: 40px auto;
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 15px 40px rgba(0,74,178,0.2);
+}
+
+.slides-modern .slide {
+  width: 100%;
+  height: 400px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #f4f7fb; /* fundo claro elegante */
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slides-modern .slide.active {
+  opacity: 1;
+  position: relative;
+}
+
+.slide-caption {
+  background: rgba(0, 74, 178, 0.7);
+  color: #fff;
+  padding: 15px 25px;
+  border-radius: 25px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  text-align: center;
+  max-width: 90%;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  transition: transform 0.3s;
+}
+
+.slide-caption:hover {
+  transform: scale(1.05);
+}
+
+/* Indicadores */
+.slider-indicators-modern {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+}
+
+.slider-indicators-modern span {
+  width: 14px;
+  height: 14px;
+  background: rgba(255,255,255,0.6);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.slider-indicators-modern span.active {
+  background: #fff;
+  transform: scale(1.2);
+}
+
+/* Mobile */
+@media(max-width:768px){
+  .slides-modern .slide {
+    height: 240px;
+    background-size: contain;
+  }
+}
+/* ===============================
+   ÁREA DO CLIENTE MODERNA
+=============================== */
+.cliente-modern h2 {
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+.cliente-subtitle {
+  color: rgba(255,255,255,.85);
+  margin-bottom: 30px;
+}
+
+#cliente {
+  background: linear-gradient(135deg, #004ab2, #012a5e);
+}
+
+.cliente-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.cliente-card {
+  background: rgba(255,255,255,.12);
+  border-radius: 22px;
+  padding: 25px 20px;
+  text-align: center;
+  color: #fff;
+  transition: .35s;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 15px 35px rgba(0,0,0,.15);
+}
+
+.cliente-card img {
+  width: 48px;
+  margin-bottom: 15px;
+}
+
+.cliente-card strong {
+  display: block;
+  font-size: 1.05rem;
+  margin-bottom: 5px;
+}
+
+.cliente-card span {
+  font-size: .85rem;
+  opacity: .85;
+}
+
+.cliente-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  background: rgba(255,255,255,.2);
+}
+
+.cliente-card.destaque {
+  background: linear-gradient(135deg, #25d366, #1ebe5d);
+  color: #fff;
+}
+/* ===== ANIMAÇÃO DE ENTRADA ===== */
+.card-plano {
+  opacity: 0;
+  transform: translateY(40px) scale(0.96);
+  transition: opacity .7s ease, transform .7s ease;
+}
+
+/* Quando visível */
+.card-plano.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Delay automático em sequência */
+.card-plano:nth-child(1) { transition-delay: .1s; }
+.card-plano:nth-child(2) { transition-delay: .25s; }
+.card-plano:nth-child(3) { transition-delay: .4s; }
+
+/* ===== HOVER MAIS SUAVE ===== */
+.card-plano:hover {
+  transform: translateY(-10px) scale(1.03);
+}
+
+/* ===== PLANO DESTAQUE COM PULSO LEVE ===== */
+.card-plano.destaque {
+  animation: pulsePlano 3s infinite;
+}
+
+@keyframes pulsePlano {
+  0% {
+    box-shadow: 0 0 0 0 rgba(0,74,178,0.35);
+  }
+  70% {
+    box-shadow: 0 0 0 18px rgba(0,74,178,0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0,74,178,0);
+  }
+}
+/* ===== BOTÃO CONTRATE AGORA MODERNO ===== */
+.btn-contratar-modern {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: linear-gradient(135deg, #004ab2, #3376e6);
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 800;
+  padding: 18px 38px;
+  border-radius: 60px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 15px 40px rgba(0,74,178,0.35);
+  transition: all .35s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Brilho animado */
+.btn-contratar-modern::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.45),
+    transparent
+  );
+  transition: .6s;
+}
+
+.btn-contratar-modern:hover::before {
+  left: 100%;
+}
+
+/* Hover */
+.btn-contratar-modern:hover {
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 20px 55px rgba(0,74,178,0.45);
+}
+
+/* Ícones */
+.btn-contratar-modern .icon {
+  font-size: 1.3rem;
+  animation: pulseIcon 2s infinite;
+}
+
+.btn-contratar-modern .arrow {
+  font-size: 1.3rem;
+  transition: transform .3s;
+}
+
+.btn-contratar-modern:hover .arrow {
+  transform: translateX(6px);
+}
+
+/* Pulso leve */
+@keyframes pulseIcon {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+  100% { transform: scale(1); }
+}
+
+/* Mobile */
+@media(max-width:768px){
+  .btn-contratar-modern {
+    width: 90%;
+    justify-content: center;
+    font-size: 1rem;
+    padding: 16px 0;
+  }
+}
+.btn-instagram-fixo{
+  position: fixed;
+  right: 15px;
+  top: 55%;
+  width: 48px;
+  height: 48px;
+  background: #E1306C;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  box-shadow: 0 8px 25px rgba(0,0,0,.3);
+  transition: .3s;
+}
+
+.btn-instagram-fixo:hover{
+  transform: translateY(-4px) scale(1.08);
+  opacity: .9;
+}
+
+.btn-instagram-fixo img{
+  width: 24px;
+  height: 24px;
+}
+
 </style>
 </head>
 <body>
@@ -554,11 +999,6 @@ footer{background:var(--escuro);color:#cbd5f5;padding:30px 20px;text-align:cente
   📲 Baixar App
 </button>
 
-
-<!-- Botões fixos -->
-<a class="btn-cliente-fixo" href="#cliente">Área do Cliente</a>
-<a class="btn-instagram-fixo" href="https://www.instagram.com/linknet_luzilandia?igsh=NDl2d3FlMHZpcTc=" target="_blank">Instagram</a>
-
 <!-- Banner -->
 <header>
   <div class="banner-container parallax">
@@ -571,13 +1011,26 @@ footer{background:var(--escuro);color:#cbd5f5;padding:30px 20px;text-align:cente
 Linknet Internet Fibra Óptica em Luzilândia e Magalhães de Almeida
 </h1>
 
+<a class="btn-instagram-fixo" 
+   href="https://instagram.com/linknet_luzilandia" 
+   target="_blank"
+   aria-label="Instagram Linknet">
+  <img 
+    src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png"
+    alt="Instagram"
+  >
+</a>
+
 
 <!-- Botão Contratar Agora com Dropdown -->
 <div class="hero-botoes">
   <div class="contratar-wrapper">
-    <button id="btn-contratar" class="dropdown-btn">
-      Contratar Agora ▼
-    </button>
+    <button id="btn-contratar" class="btn-contratar-modern">
+  <span class="icon">⚡</span>
+  Contrate Agora
+  <span class="arrow">➜</span>
+</button>
+
 
     <div id="menu-contratar" class="menu-contratar">
       <a href="https://wa.me/5586999146612" target="_blank">📍 Piauí</a>
@@ -588,85 +1041,166 @@ Linknet Internet Fibra Óptica em Luzilândia e Magalhães de Almeida
 
 
 <!-- Slider -->
-<div class="slider">
-  <div class="slides">
-    <img src="images/slide1.jpg" alt="Slide 1" class="active">
-    <img src="images/slide2.jpg" alt="Slide 2">
-    <img src="images/slide3.jpg" alt="Slide 3">
+<!-- Slider Moderno -->
+<div class="slider-modern">
+  <div class="slides-modern">
+    <div class="slide active" style="background-image: url('images/slide1.jpg');">
+      <div class="#"></div>
+    </div>
+    <div class="slide" style="background-image: url('images/slide2.jpg');">
+      <div class="#"></div>
+    </div>
+    <div class="slide" style="background-image: url('images/slide3.jpg');">
+      <div class="#"></div>
+    </div>
   </div>
-  <div class="slider-indicators">
-    <span class="active"></span>
-    <span></span>
-    <span></span>
+
+  <div class="slider-indicators-modern">
+    <span class="active" data-slide="0"></span>
+    <span data-slide="1"></span>
+    <span data-slide="2"></span>
   </div>
 </div>
+
 <!-- Vantagens -->
-<section id="vantagens">
-<h2>Por que escolher a Linknet?</h2>
-<div class="cards">
-  <div class="card"><span class="icon">🚀</span><strong>Fibra 100%</strong><br>Velocidade real sem oscilações</div>
-  <div class="card"><span class="icon">📶</span><strong>Wi-Fi 6</strong><br>Mais alcance e desempenho</div>
-  <div class="card"><span class="icon">🛠️</span><strong>Suporte Local</strong><br>Atendimento rápido e humano</div>
-  <div class="card"><span class="icon">⚡</span><strong>Instalação Grátis</strong><br>Conectamos você sem custo</div>
-</div>
+<!-- Vantagens Modernas -->
+<section id="vantagens" class="vantagens-modern">
+  <h2>Por que escolher a Linknet?</h2>
+  <div class="cards-modern">
+    <div class="card-modern" style="background-image: url('https://images.unsplash.com/photo-1581091215368-2e4f868cc9d7?auto=format&fit=crop&w=500&q=80');">
+      <div class="overlay"></div>
+      <div class="icon-overlay">🚀</div>
+      <h3>Fibra 100%</h3>
+      <p>Velocidade real sem oscilações</p>
+    </div>
+    <div class="card-modern" style="background-image: url('https://images.unsplash.com/photo-1581091215361-798bbf1b1d9c?auto=format&fit=crop&w=500&q=80');">
+      <div class="overlay"></div>
+      <div class="icon-overlay">📶</div>
+      <h3>Wi-Fi 6</h3>
+      <p>Mais alcance e desempenho</p>
+    </div>
+    <div class="card-modern" style="background-image: url('https://images.unsplash.com/photo-1591696331111-1b29c34a2c3b?auto=format&fit=crop&w=500&q=80');">
+      <div class="overlay"></div>
+      <div class="icon-overlay">🛠️</div>
+      <h3>Suporte Local</h3>
+      <p>Atendimento rápido e humano</p>
+    </div>
+    <div class="card-modern" style="background-image: url('https://images.unsplash.com/photo-1602024722210-c93f5f9c3c2c?auto=format&fit=crop&w=500&q=80');">
+      <div class="overlay"></div>
+      <div class="icon-overlay">⚡</div>
+      <h3>Instalação Grátis</h3>
+      <p>Conectamos você sem custo</p>
+    </div>
+  </div>
 </section>
 
+
 <!-- Planos -->
-<section id="planos">
-<h2>Planos</h2>
-<div class="cards">
-  <div class="card plano">
-    <div class="velocidade">300 Mega</div>
-    <div class="preco">R$ 89,90</div>
-    <div class="beneficios">✔ Instalação Grátis<br>✔ Wi-Fi 6</div>
-    <a class="btn" href="https://wa.me/5586999146612" target="_blank">Contratar PI</a>
-    <a class="btn" href="https://wa.me/559899685797" target="_blank">Contratar MA</a>
+<!-- Planos Modernos -->
+<section id="planos" class="planos-modern">
+  <h2>Nossos Planos</h2>
+
+  <div class="cards-planos">
+
+    <div class="card-plano">
+  <div class=""></div>
+  <div class="nome-plano">Turbo</div>
+  <div class="velocidade-plano">300 Mega</div>
+  <div class="preco">R$ 89,90</div>
+  <div class="beneficios">
+    🚀 Ultra velocidade<br>
+    📶 Wi-Fi 6<br>
+    ⭐ Melhor custo-benefício
   </div>
-  <div class="card plano" style="position:relative">
-    <div class="tag">MAIS VENDIDO</div>
-    <div class="velocidade">700 Mega</div>
-    <div class="preco">R$ 99,90</div>
-    <div class="beneficios">✔ Instalação Grátis<br>✔ Wi-Fi 6</div>
-    <a class="btn" href="https://wa.me/5586999146612" target="_blank">Contratar PI</a>
-    <a class="btn" href="https://wa.me/559899685797" target="_blank">Contratar MA</a>
-  </div>
-  <div class="card plano">
-    <div class="velocidade">900 Mega</div>
-    <div class="preco">R$ 129,90</div>
-    <div class="beneficios">✔ Instalação Grátis<br>✔ Wi-Fi 6</div>
-    <a class="btn" href="https://wa.me/5586999146612" target="_blank">Contratar PI</a>
-    <a class="btn" href="https://wa.me/559899685797" target="_blank">Contratar MA</a>
+  <div class="cta-buttons">
+    <a class="btn-plan" href="https://wa.me/5586999146612">PI</a>
+    <a class="btn-plan" href="https://wa.me/559899685797">MA</a>
   </div>
 </div>
+
+
+    <div class="card-plano destaque">
+  <div class="tag-plano">MAIS VENDIDO</div>
+  <div class="nome-plano">Turbo</div>
+  <div class="velocidade-plano">700 Mega</div>
+  <div class="preco">R$ 99,90</div>
+  <div class="beneficios">
+    🚀 Ultra velocidade<br>
+    📶 Wi-Fi 6<br>
+    ⭐ Melhor custo-benefício
+  </div>
+  <div class="cta-buttons">
+    <a class="btn-plan" href="https://wa.me/5586999146612">PI</a>
+    <a class="btn-plan" href="https://wa.me/559899685797">MA</a>
+  </div>
+</div>
+
+
+   <div class="card-plano">
+  <div class=""></div>
+  <div class="nome-plano">Turbo</div>
+  <div class="velocidade-plano">900 Mega</div>
+  <div class="preco">R$ 129,90</div>
+  <div class="beneficios">
+    🚀 Ultra velocidade<br>
+    📶 Wi-Fi 6<br>
+    ⭐ Melhor custo-benefício
+  </div>
+  <div class="cta-buttons">
+    <a class="btn-plan" href="https://wa.me/5586999146612">PI</a>
+    <a class="btn-plan" href="https://wa.me/559899685797">MA</a>
+  </div>
+</div>
+
+
+  </div>
 </section>
 
 <!-- Área do Cliente -->
-<section id="cliente">
-<h2>Área do Cliente</h2>
-<div class="card boleto-card">
-  <span class="icon">📄</span>
-  <strong>2ª Via de Boleto</strong><br>
-  Emita sua fatura online<br><br>
+<section id="cliente" class="section cliente-modern">
+  <h2>Área do Cliente</h2>
+  <p class="cliente-subtitle">
+    Acesse rapidamente os principais serviços.</p>
+    <p class="cliente-subtitle">
+*Cliente PI: Usuário:CPF Senha:(Os 4 ultimos numeros do CPF)
+  </p>
+<p class="cliente-subtitle">
+*Cliente MA: Usuário:CPF Senha:123
+  </p>
 
-  <button class="btn btn-boleto" onclick="toggleBoletoMenu(event)">
-  <span class="icon-boleto">📄</span>
-  Escolher Região 
-  <span class="seta">▼</span>
-</button>
+  <div class="cliente-grid">
 
-
-  <div class="boleto-menu">
-    <a href="https://linknetluzilandia.mikweb.com.br/" target="_blank">
-      📍 Cliente Maranhão (MA)
+    <a href="https://linknetluzilandia.mikweb.com.br/" target="_blank" class="cliente-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/942/942748.png" alt="Boleto Maranhão">
+      <strong>2ª Via de Boleto</strong>
+      <span>Maranhão (MA)</span>
     </a>
-    <a href="https://linknet.sistemagesprov.dev.br/central/login" target="_blank">
-      📍 Cliente Piauí, 📍Pov.Formosa, 📍Pov.Porto Formoso, 📍Pov.Chapeu de Couro (PI)
+
+    <a href="https://linknet.sistemagesprov.dev.br/central/login" target="_blank" class="cliente-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/942/942748.png" alt="Boleto Piauí">
+      <strong>2ª Via de Boleto</strong>
+      <span>Piauí (PI)</span>
     </a>
+
+    <a href="http://speedtest.net/pt" target="_blank" class="cliente-card">
+      <img src="https://cdn-icons-png.flaticon.com/512/3039/3039407.png" alt="Teste de Velocidade">
+      <strong>Teste de Velocidade</strong>
+      <span>Ver sua conexão</span>
+    </a>
+
+    <a href="https://wa.me/5586991466612" target="_blank" class="cliente-card destaque">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp Piauí">
+      <strong>WhatsApp Suporte</strong>
+      <span>Piauí (PI)</span>
+    </a>
+
+    <a href="https://wa.me/559899685797" target="_blank" class="cliente-card destaque">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" alt="WhatsApp Maranhão">
+      <strong>WhatsApp Suporte</strong>
+      <span>Maranhão (MA)</span>
+    </a>
+
   </div>
-</div>
-  <div class="card"><span class="icon">📊</span><strong>Teste de Velocidade</strong><br><br><a class="btn" href="https://www.speedtest.net/pt" target="_blank">Testar Agora</a></div>
-  <div class="card"><span class="icon">💬</span><strong>Suporte</strong><br><br><a class="btn" href="https://wa.me/5586999146612" target="_blank">WhatsApp PI</a> <a class="btn" href="https://wa.me/559899685797" target="_blank">WhatsApp MA</a></div>
-</div>
 </section>
 
 <footer>
@@ -786,6 +1320,49 @@ if (isIOS && !isInStandaloneMode) {
     );
   };
 }
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const slides = document.querySelectorAll(".slides-modern .slide");
+  const indicators = document.querySelectorAll(".slider-indicators-modern span");
+  let current = 0;
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.toggle("active", i === index);
+      indicators[i].classList.toggle("active", i === index);
+    });
+    current = index;
+  }
+
+  indicators.forEach((dot, i) => {
+    dot.addEventListener("click", () => showSlide(i));
+  });
+
+  function nextSlide() {
+    const next = current + 1 < slides.length ? current + 1 : 0;
+    showSlide(next);
+  }
+
+  setInterval(nextSlide, 5000);
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const planos = document.querySelectorAll(".card-plano");
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+      }
+    });
+  }, {
+    threshold: 0.2
+  });
+
+  planos.forEach(plano => observer.observe(plano));
+});
 </script>
 
 </body>
