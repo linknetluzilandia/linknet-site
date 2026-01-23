@@ -1013,6 +1013,77 @@ footer{background:var(--escuro);color:#cbd5f5;padding:30px 20px;text-align:cente
   width: 24px;
   height: 24px;
 }
+/* =====================================
+   BODY E FUNDO
+===================================== */
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden; /* impede barra horizontal */
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  color: #0f172a;
+  background-color: #f5f9ff; /* cor de fallback caso imagem não carregue */
+  background-image: url('images/fundo-site.jpg');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed; /* efeito parallax suave */
+}
+
+/* Banner Container */
+.banner-container {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.banner-container .banner-img {
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* mantém a imagem proporcional e evita overflow */
+  display: block;
+  max-width: 100%;
+}
+
+.client-bar-banner {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 74, 178, 0.7);
+  padding: 10px 25px;
+  border-radius: 25px;
+  font-weight: 600;
+  text-align: center;
+  color: #fff;
+  z-index: 2;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  .banner-container {
+    max-height: 320px; /* limita altura para mobile */
+  }
+
+  .banner-container .banner-img {
+    max-height: 320px;
+    object-fit: cover; /* mantém proporção sem estourar */
+  }
+
+  .client-bar-banner {
+    position: relative;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    margin: 10px auto;
+    font-size: 0.9rem;
+    padding: 8px 20px;
+  }
+}
 
 </style>
 </head>
