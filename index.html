@@ -1143,6 +1143,53 @@ html, body {
     display: none;
   }
 }
+/* ===========================
+   Slider Mobile Sem Legenda
+=========================== */
+.slider-mobile {
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
+  border-radius: 15px;
+}
+
+.slides-mobile .slide-mobile {
+  display: none;
+  width: 100%;
+}
+
+.slides-mobile .slide-mobile.active {
+  display: block;
+}
+
+.slides-mobile .slide-mobile img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 15px;
+}
+
+.slider-indicators-mobile {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+
+.slider-indicators-mobile span {
+  display: block;
+  width: 10px;
+  height: 10px;
+  background: rgba(255,255,255,0.7);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.slider-indicators-mobile span.active {
+  background: #007BFF;
+}
 
 </style>
 </head>
@@ -1205,9 +1252,17 @@ Linknet Internet Fibra Óptica em Luzilândia e Magalhães de Almeida
 <!-- Slider Mobile -->
 <div class="slider-mobile">
   <div class="slides-mobile">
-    <div class="slide-mobile active">📶 Conexão rápida em Luzilândia!</div>
-    <div class="slide-mobile">⚡ Instalação grátis e rápida!</div>
-    <div class="slide-mobile">🛠️ Suporte local sempre disponível!</div>
+    <div class="slide-mobile active">
+      <img src="images/mobile1.jpg" alt="Conexão rápida em Luzilândia">
+    </div>
+
+    <div class="slide-mobile">
+      <img src="images/mobile2.jpg" alt="Instalação grátis e rápida">
+    </div>
+
+    <div class="slide-mobile">
+      <img src="images/mobile3.jpg" alt="Suporte local sempre disponível">
+    </div>
   </div>
 
   <div class="slider-indicators-mobile">
@@ -1566,6 +1621,32 @@ document.addEventListener("DOMContentLoaded", function() {
 
   setInterval(nextSlide, 4000); // troca automática a cada 4s
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+  const slides = document.querySelectorAll(".slides-mobile .slide-mobile");
+  const indicators = document.querySelectorAll(".slider-indicators-mobile span");
+  let current = 0;
+
+  function showSlide(index) {
+    slides.forEach((slide, i) => {
+      slide.classList.toggle("active", i === index);
+      indicators[i].classList.toggle("active", i === index);
+    });
+    current = index;
+  }
+
+  indicators.forEach((dot, i) => {
+    dot.addEventListener("click", () => showSlide(i));
+  });
+
+  function nextSlide() {
+    const next = current + 1 < slides.length ? current + 1 : 0;
+    showSlide(next);
+  }
+
+  setInterval(nextSlide, 5000); // troca a cada 5 segundos
+});
+
 </script>
 
 </body>
