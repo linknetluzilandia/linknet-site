@@ -28,8 +28,7 @@ body{
   font-family:'Roboto',sans-serif;
   color:
 ;
-  background:linear-gradient(180deg,rgba(0,74,178,0.1),rgba(255,255,255,1)),url('images/fundo-site.jpg') no-repeat center/cover;
-  background-attachment:fixed;
+  background-color:var(--cinza);
   overflow-x:hidden;
 }
 nav{
@@ -66,11 +65,31 @@ nav ul li a:hover{
   color:var(--azul-claro);
 }
 header{
-  background:linear-gradient(135deg,var(--azul),var(--azul-claro));
-  color:#fff;
+  position:relative;
+  width:100%;
+  height:80vh;
+  overflow:hidden;
+}
+header img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+header .overlay{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:linear-gradient(180deg,rgba(0,0,0,0.4),rgba(0,0,0,0.6));
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
   text-align:center;
-  padding:120px 20px 100px;
-  margin-top:60px;
+  color:#fff;
+  padding:0 20px;
 }
 header h1{
   font-family:'Montserrat',sans-serif;
@@ -114,13 +133,12 @@ section h2{
   gap:25px;
 }
 .card{
-  background:rgba(255,255,255,0.9);
+  background:#fff;
   border-radius:20px;
   padding:30px;
   text-align:center;
   box-shadow:0 10px 25px rgba(0,74,178,.15);
   transition:.3s;
-  backdrop-filter:blur(6px);
 }
 .card:hover{
   transform:translateY(-8px);
@@ -214,6 +232,9 @@ section h2{
   padding:25px;
   text-align:center;
   transition:.3s;
+  text-decoration:none;
+  color:#fff;
+  display:block;
 }
 .cliente-card:hover{
   background:rgba(255,255,255,.25);
@@ -222,6 +243,15 @@ section h2{
 .cliente-card img{
   width:50px;
   margin-bottom:10px;
+}
+.cliente-card strong{
+  display:block;
+  font-size:1.1rem;
+  margin-bottom:5px;
+}
+.cliente-card span{
+  font-size:0.9rem;
+  opacity:0.9;
 }
 footer{
   background:var(--escuro);
@@ -233,6 +263,7 @@ footer{
 }
 @media(max-width:768px){
   nav ul{display:none;}
+  header{height:60vh;}
   header h1{font-size:2rem;}
   .card-plano .velocidade{font-size:1.8rem;}
 }
@@ -249,9 +280,12 @@ footer{
 </nav>
 
 <header>
-  <h1>Internet Fibra Óptica de Verdade</h1>
-  <p>Conectando Luzilândia-PI e Magalhães de Almeida-MA com alta velocidade e estabilidade.</p>
-  <a href="https://wa.me/558699146612" class="btn-hero">Contratar Agora</a>
+  <img src="images/banner-linknet.jpg" alt="Banner Linknet">
+  <div class="overlay">
+    <h1>Internet Fibra Óptica de Verdade</h1>
+    <p>Conectando Luzilândia-PI e Magalhães de Almeida-MA com alta velocidade e estabilidade.</p>
+    <a href="https://wa.me/558699146612" class="btn-hero">Contratar Agora</a>
+  </div>
 </header>
 
 <section id="vantagens">
