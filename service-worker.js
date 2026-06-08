@@ -1,4 +1,4 @@
-const CACHE_NAME = 'linknet-cache-v8'; // 🔥 troque o número sempre que atualizar
+const CACHE_NAME = 'linknet-cache-v9'; // 🔥 troque o número sempre que atualizar
 const URLS_TO_CACHE = [
   '/',
   '/index.html',
