@@ -8,7 +8,6 @@
 <link rel="canonical" href="https://linknetluzilandia.com.br/">
 <link rel="icon" href="images/favicon.png" type="image/png">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-<link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="
 ">
 <style>
@@ -27,52 +26,23 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 body{
   font-family:'Roboto',sans-serif;
-  background:var(--cinza);
   color:
 ;
+  background:linear-gradient(180deg,rgba(0,74,178,0.1),rgba(255,255,255,1)),url('images/fundo-site.jpg') no-repeat center/cover;
+  background-attachment:fixed;
   overflow-x:hidden;
-}
-header{
-  background:linear-gradient(135deg,var(--azul),var(--azul-claro));
-  color:#fff;
-  text-align:center;
-  padding:80px 20px;
-  position:relative;
-}
-header h1{
-  font-family:'Montserrat',sans-serif;
-  font-size:2.5rem;
-  font-weight:800;
-}
-header p{
-  font-size:1.2rem;
-  margin-top:10px;
-}
-.btn-hero{
-  display:inline-block;
-  margin-top:25px;
-  background:#fff;
-  color:var(--azul);
-  padding:14px 30px;
-  border-radius:40px;
-  font-weight:700;
-  text-decoration:none;
-  transition:.3s;
-}
-.btn-hero:hover{
-  background:var(--azul-claro);
-  color:#fff;
 }
 nav{
   position:fixed;
   top:0;
   width:100%;
-  background:#fff;
+  background:rgba(255,255,255,0.95);
+  backdrop-filter:blur(8px);
   box-shadow:0 4px 15px rgba(0,0,0,.1);
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:10px 25px;
+  padding:12px 25px;
   z-index:999;
 }
 nav .logo{
@@ -95,6 +65,37 @@ nav ul li a{
 nav ul li a:hover{
   color:var(--azul-claro);
 }
+header{
+  background:linear-gradient(135deg,var(--azul),var(--azul-claro));
+  color:#fff;
+  text-align:center;
+  padding:120px 20px 100px;
+  margin-top:60px;
+}
+header h1{
+  font-family:'Montserrat',sans-serif;
+  font-size:2.8rem;
+  font-weight:800;
+}
+header p{
+  font-size:1.2rem;
+  margin-top:10px;
+}
+.btn-hero{
+  display:inline-block;
+  margin-top:25px;
+  background:#fff;
+  color:var(--azul);
+  padding:14px 30px;
+  border-radius:40px;
+  font-weight:700;
+  text-decoration:none;
+  transition:.3s;
+}
+.btn-hero:hover{
+  background:var(--azul-claro);
+  color:#fff;
+}
 section{
   max-width:1200px;
   margin:80px auto;
@@ -113,12 +114,13 @@ section h2{
   gap:25px;
 }
 .card{
-  background:#fff;
+  background:rgba(255,255,255,0.9);
   border-radius:20px;
   padding:30px;
   text-align:center;
   box-shadow:0 10px 25px rgba(0,74,178,.15);
   transition:.3s;
+  backdrop-filter:blur(6px);
 }
 .card:hover{
   transform:translateY(-8px);
@@ -140,13 +142,11 @@ section h2{
   font-size:1rem;
 }
 .planos{
-  background:linear-gradient(180deg,#fff,
+  background:linear-gradient(180deg,
+,
 );
   border-radius:30px;
   padding:60px 20px;
-}
-.planos .cards{
-  gap:35px;
 }
 .card-plano{
   background:#fff;
